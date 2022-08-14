@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('content', [App\Http\Controllers\WebsiteController::class, 'index'])->name('content');
     Route::put('contentedit/{content}', [App\Http\Controllers\WebsiteController::class, 'update'])->name('contentedit');
+});
+
+Route::prefix('front')->middleware('auth')->group(function () {
+    Route::get('shop', [App\Http\Controllers\PublicController::class, 'shop'])->name('shop');
 });
 Route::get('/', function () {
     return view('front.index');
