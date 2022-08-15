@@ -150,11 +150,56 @@
 <script src="{{ asset('/') }}assets/front/js/plugins.js"></script>
 <!-- Ajax Mail js -->
 <script src="{{ asset('/') }}assets/front/js/ajax-mail.js"></script>
+<!-- cart js -->
+<script src="{{ asset('/') }}assets/front/js/cart.js"></script>
 <!-- Main js -->
 <script src="{{ asset('/') }}assets/front/js/main.js"></script>
+<script>
+    function renderCart(items) {
+        const $cart = document.querySelector(".cart")
+        const $total = document.querySelector(".total")
 
+        $cart.innerHTML = items.map((item) => `
+
+
+        <div class="single-cart clearfix">
+                                            <div class="cart-image">
+                                                <a href="product-details.php"><img
+                                                        src="{{ asset('/') }}assets/front/img/product/cart-1.jpg"
+                                                        alt="Image"></a>
+                                            </div>
+                                            <div class="cart-info">
+                                                <h5><a href="product-details.php">${item.name}</a></h5>
+                                                <p>Price : ${item.price}</p>
+                                                <p>Qty : ${item.quantity}</p>
+                                                <button type="button" href="#" class="cart-delete" title="Remove this item" onClick="cartLS.remove(${item.id})"><i
+                                                        class="pe-7s-trash"></i></button>
+                                            </div>
+                                        </div>`).join("")
+
+        $total.innerHTML = "$" + cartLS.total()
+        // console.log(cartLS.total);
+    }
+    renderCart(cartLS.list())
+    cartLS.onChange(renderCart)
+</script>
 </body>
 
 
 
 </html>
+{{-- <tr>
+						<td>#${item.id}</td>
+						<td>${item.name}</td>
+						<td>${item.quantity}</td>
+						<td style="width: 60px;">	
+							<button type="button" class="btn btn-block btn-sm btn-outline-primary"
+								onClick="cartLS.quantity(${item.id},1)">+</button>
+						</td>
+						<td style="width: 60px;">	
+							<button type="button" class="btn btn-block btn-sm btn-outline-primary"
+								onClick="cartLS.quantity(${item.id},-1)">-</button>
+						</td>
+						<td class="text-right">$${item.price}</td>
+						<td class="text-right"><Button class="btn btn-primary" onClick="cartLS.remove(${item.id})">Delete</Button></td>
+					</tr> --}}

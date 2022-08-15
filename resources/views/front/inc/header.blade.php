@@ -55,10 +55,9 @@
                             <ul>
                                 <li class="active"><a href="index.php">Categories</a>
                                     <ul class="sub-menu">
-                                        <li><a href="index.php">category one</a></li>
-                                        <li><a href="index.php">category two</a></li>
-                                        <li><a href="index.php">category three</a></li>
-                                        <li class="active"><a href="index-5.php">category four</a></li>
+                                        @foreach ($categories as $category)
+                                            <li><a href="#">{{ $category->name }}</a></li>
+                                        @endforeach
                                     </ul>
                                 </li>
                                 <li><a href="{{ route('shop') }}">shop</a></li>
@@ -105,7 +104,7 @@
                                         <p>You have <span>2 items</span> in your shopping bag</p>
                                     </div>
                                     <!-- Cart Products -->
-                                    <div class="all-cart-product clearfix">
+                                    <div class="all-cart-product cart clearfix">
                                         <div class="single-cart clearfix">
                                             <div class="cart-image">
                                                 <a href="product-details.php"><img
@@ -120,24 +119,11 @@
                                                         class="pe-7s-trash"></i></a>
                                             </div>
                                         </div>
-                                        <div class="single-cart clearfix">
-                                            <div class="cart-image">
-                                                <a href="product-details.php"><img
-                                                        src="{{ asset('/') }}assets/front/img/product/cart-2.jpg"
-                                                        alt="Image"></a>
-                                            </div>
-                                            <div class="cart-info">
-                                                <h5><a href="product-details.php">DSR Eiffel chair</a></h5>
-                                                <p>Price : £9.00</p>
-                                                <p>Qty : 1</p>
-                                                <a href="#" class="cart-delete" title="Remove this item"><i
-                                                        class="pe-7s-trash"></i></a>
-                                            </div>
-                                        </div>
+
                                     </div>
                                     <!-- Cart Total -->
                                     <div class="cart-totals">
-                                        <h5>Total <span>£12.00</span></h5>
+                                        <h5>Total <span class="total"></span></h5>
                                     </div>
                                     <!-- Cart Button -->
                                     <div class="cart-bottom  clearfix">

@@ -15,7 +15,34 @@
                         <span data-key="t-dashboard">Dashboard</span>
                     </a>
                 </li>
-
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i data-feather="grid"></i>
+                        <span data-key="t-apps">Products Management</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('viewcategory') }}">
+                                <span data-key="t-chat">Category</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('addproduct') }}">
+                                <span data-key="t-chat">Add Products</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('product.index') }}">
+                                <span data-key="t-chat">View Products</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span data-key="t-chat">Color</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="grid"></i>
@@ -29,8 +56,8 @@
                         </li>
 
                         <li>
-                            <a href="apps-chat.html">
-                                <span data-key="t-chat">Chat</span>
+                            <a href="#">
+                                <span data-key="t-chat">Color</span>
                             </a>
                         </li>
                     </ul>
