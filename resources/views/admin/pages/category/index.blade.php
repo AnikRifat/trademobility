@@ -44,7 +44,7 @@
 
 
                                             <th>{{ $category->id }}</th>
-                                            <td>{{ $category->name }}</td>
+                                            <td>{{ $category->products->name }}</td>
                                             <td>
                                                 <form action="{{ route('deleteCategory', $category->id) }}" method="post">
                                                     @csrf

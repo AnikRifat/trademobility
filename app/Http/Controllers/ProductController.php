@@ -71,9 +71,20 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
-    }
+        // $product = Product::all();
+        // dd($product);
 
+    }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function details(Product $product)
+    {
+        return view('front.pages.product_details', compact('product'));
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -82,7 +93,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.pages.products.edit_products', compact('product'));
     }
 
     /**
@@ -94,7 +105,31 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        // dd($request->request->all());
+
+        $request->validate([
+            'name' => 'required',
+            'details' => 'required',
+            // 'image' => 'required|image|mimes:jpg,jpeg,png|max:2024',
+            'price' => 'required',
+            'unit' => 'required',
+            'category_id' => 'required',
+        ]);
+
+        $input = $request->all();
+
+        if ($image = $request->file('image')) {
+            $filePath = 'assets/images/product/';
+            $setImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($filePath, $setImage);
+            $input['image'] = $setImage;
+        } else {
+            unset($input['image']);
+        }
+        // dd($input);
+        $product->update($input);
+
+        return redirect()->route('product.index')->with('success', 'blog uploader Scueesfully.');
     }
 
     /**
@@ -105,6 +140,24 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        // dd($category->delete());
+        return redirect()->route('product.index')->with('success', 'Product Deleted Scueesfully.');
+    }
+    /** 
+     * Remove the specified resource from storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        // dd($request->input());
+        // return $request->input();
+        $data = Product::where('name', 'like', '%' . $request->input('query') . '%')->get();
+        // dd($data);
+
+        return view('front.pages.search', compact('data'));
     }
 }

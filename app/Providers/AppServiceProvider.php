@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\Website;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -30,5 +31,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('content', $content);
         $categories = Category::all();
         View::share('categories', $categories);
+        $products = Product::all();
+        View::share('products', $products);
     }
 }

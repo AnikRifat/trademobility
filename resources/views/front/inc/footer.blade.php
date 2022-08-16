@@ -157,15 +157,17 @@
 <script>
     function renderCart(items) {
         const $cart = document.querySelector(".cart")
+        const $cartcheck = document.querySelector(".cartcheck")
         const $total = document.querySelector(".total")
+        const $totali = document.querySelector(".totali")
 
         $cart.innerHTML = items.map((item) => `
 
 
-        <div class="single-cart clearfix">
+                                         <div class="single-cart clearfix">
                                             <div class="cart-image">
                                                 <a href="product-details.php"><img
-                                                        src="{{ asset('/') }}assets/front/img/product/cart-1.jpg"
+                                                        src="{{ asset('/') }}assets/images/product/${item.image}"
                                                         alt="Image"></a>
                                             </div>
                                             <div class="cart-info">
@@ -177,7 +179,23 @@
                                             </div>
                                         </div>`).join("")
 
+        $cartcheck.innerHTML = items.map((item) => `
+                                         <tr>
+                                            <td class="pro-thumbnail"><a href="product-details.html"><img
+                                                        src="{{ asset('/') }}assets/images/product/${item.image}" alt="Image" /></a></td>
+                                            <td class="pro-title"><a href="product-details.html">${item.name}</a>
+                                            </td>
+                                            <td class="pro-price"><span class="amount"> $ ${item.price}</span></td>
+                                            <td class="pro-quantity">
+                                                <div class="product-quantity"><input type="text" value="1" /></div>
+                                            </td>
+                                            <td class="pro-subtotal">${item.price}</td>
+                                            <td class="pro-remove"><a href="#/">×</a></td>
+                                        </tr>
+        `).join("")
+
         $total.innerHTML = "$" + cartLS.total()
+        $totali.value = cartLS.total()
         // console.log(cartLS.total);
     }
     renderCart(cartLS.list())

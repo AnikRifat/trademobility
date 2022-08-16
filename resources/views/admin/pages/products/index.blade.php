@@ -25,6 +25,7 @@
                                             <th>unit</th>
                                             <th>image</th>
                                             <th>category</th>
+                                            <th>action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -38,8 +39,18 @@
                                                 <td> <img height="100"
                                                         src="{{ asset('/') }}assets/images/product/{{ $item->image }}"
                                                         alt=""> </td>
-                                                <td>{{ $item->category }}</td>
+                                                <td>{{ $item->category?->name }}</td>
+                                                <td>
+                                                    <form action="{{ route('product.delete', $item->id) }}" method="post">
+                                                        @csrf
+                                                        @method('Delete')
+                                                        <a href="{{ route('product.edit', $item->id) }}"
+                                                            class="btn btn-danger btn-sm"><i class="fas fa-edit"></i></a>
+                                                        <button type="submit" class="btn btn-danger btn-sm"><i
+                                                                class="fas fa-trash"></i></button>
+                                                    </form>
 
+                                                </td>
                                             </tr>
                                         @endforeach
 

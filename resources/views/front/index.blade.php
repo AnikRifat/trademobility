@@ -61,205 +61,33 @@
                 </div>
                 <div class="row">
                     <!-- product-item start -->
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-8">
-                        <div class="product-item text-center">
-                            <div class="product-img">
-                                <a class="image" href="product-details.php"><img
-                                        src="{{ asset('/') }}assets/front/img/product/1.jpg" alt="" /></a>
-                                <a href="cart#" class="add-to-cart">add to cart</a>
-                                <div class="action-btn fix">
-                                    <!-- <a href="wishlist#" title="Wishlist"><i class="pe-7s-like"></i></a> -->
-                                    <a href="product-details.php" title="Quickview"><i class="pe-7s-look"></i></a>
-                                    <!-- <a href="product-details.php" title="Compare"><i class="pe-7s-repeat"></i></a> -->
+                    @foreach ($products as $product)
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-8">
+                            <div class="product-item text-center">
+                                <div class="product-img">
+                                    <a class="image" href="product-details.php"><img
+                                            src="{{ asset('/') }}assets/images/product/{{ $product->image }}"
+                                            alt="" /></a>
+                                    <button type="button" class="add-to-cart"
+                                        onclick="cartLS.add({id: {{ $product->id }}, name: '{{ $product->name }}', price: {{ $product->price }}})">add
+                                        to
+                                        cart</button>
+                                    <div class="action-btn fix">
+                                        <!-- <a href="wishlist#" title="Wishlist"><i class="pe-7s-like"></i></a> -->
+                                        <a href="#" title="Quickview"><i class="pe-7s-look"></i></a>
+                                        <!-- <a href="product-details.php" title="Compare"><i class="pe-7s-repeat"></i></a> -->
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h5 class="title"><a href="product-details.php">{{ $product->name }}</a></h5>
+                                    <span class="price"><span class="new">$ {{ $product->price }}</span></span>
                                 </div>
                             </div>
-                            <div class="product-info">
-                                <h5 class="title"><a href="product-details.php">Le Parc Minotti Chair</a></h5>
-                                <span class="price"><span class="new">$169.00</span></span>
-                            </div>
                         </div>
-                    </div>
+                    @endforeach
+
                     <!-- product-item end -->
-                    <!-- product-item start -->
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-8">
-                        <div class="product-item text-center">
-                            <div class="product-img">
-                                <a class="image" href="product-details.php"><img
-                                        src="{{ asset('/') }}assets/front/img/product/1.jpg" alt="" /></a>
-                                <a href="cart#" class="add-to-cart">add to cart</a>
-                                <div class="action-btn fix">
-                                    <!-- <a href="wishlist#" title="Wishlist"><i class="pe-7s-like"></i></a> -->
-                                    <a href="product-details.php" title="Quickview"><i class="pe-7s-look"></i></a>
-                                    <!-- <a href="product-details.php" title="Compare"><i class="pe-7s-repeat"></i></a> -->
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <h5 class="title"><a href="product-details.php">Le Parc Minotti Chair</a></h5>
-                                <span class="price"><span class="new">$169.00</span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product-item end -->
-                    <!-- product-item start -->
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-8">
-                        <div class="product-item text-center">
-                            <div class="product-img">
-                                <a class="image" href="product-details.php"><img
-                                        src="{{ asset('/') }}assets/front/img/product/1.jpg" alt="" /></a>
-                                <a href="cart#" class="add-to-cart">add to cart</a>
-                                <div class="action-btn fix">
-                                    <!-- <a href="wishlist#" title="Wishlist"><i class="pe-7s-like"></i></a> -->
-                                    <a href="product-details.php" title="Quickview"><i class="pe-7s-look"></i></a>
-                                    <!-- <a href="product-details.php" title="Compare"><i class="pe-7s-repeat"></i></a> -->
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <h5 class="title"><a href="product-details.php">Le Parc Minotti Chair</a></h5>
-                                <span class="price"><span class="new">$169.00</span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product-item end -->
-                    <!-- product-item start -->
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-8">
-                        <div class="product-item text-center">
-                            <div class="product-img">
-                                <a class="image" href="product-details.php"><img
-                                        src="{{ asset('/') }}assets/front/img/product/1.jpg" alt="" /></a>
-                                <a href="cart#" class="add-to-cart">add to cart</a>
-                                <div class="action-btn fix">
-                                    <!-- <a href="wishlist#" title="Wishlist"><i class="pe-7s-like"></i></a> -->
-                                    <a href="product-details.php" title="Quickview"><i class="pe-7s-look"></i></a>
-                                    <!-- <a href="product-details.php" title="Compare"><i class="pe-7s-repeat"></i></a> -->
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <h5 class="title"><a href="product-details.php">Le Parc Minotti Chair</a></h5>
-                                <span class="price"><span class="new">$169.00</span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product-item end -->
-                    <!-- product-item start -->
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-8">
-                        <div class="product-item text-center">
-                            <div class="product-img">
-                                <a class="image" href="product-details.php"><img
-                                        src="{{ asset('/') }}assets/front/img/product/1.jpg" alt="" /></a>
-                                <a href="cart#" class="add-to-cart">add to cart</a>
-                                <div class="action-btn fix">
-                                    <!-- <a href="wishlist#" title="Wishlist"><i class="pe-7s-like"></i></a> -->
-                                    <a href="product-details.php" title="Quickview"><i class="pe-7s-look"></i></a>
-                                    <!-- <a href="product-details.php" title="Compare"><i class="pe-7s-repeat"></i></a> -->
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <h5 class="title"><a href="product-details.php">Le Parc Minotti Chair</a></h5>
-                                <span class="price"><span class="new">$169.00</span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product-item end -->
-                    <!-- product-item start -->
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-8">
-                        <div class="product-item text-center">
-                            <div class="product-img">
-                                <a class="image" href="product-details.php"><img
-                                        src="{{ asset('/') }}assets/front/img/product/1.jpg" alt="" /></a>
-                                <a href="cart#" class="add-to-cart">add to cart</a>
-                                <div class="action-btn fix">
-                                    <!-- <a href="wishlist#" title="Wishlist"><i class="pe-7s-like"></i></a> -->
-                                    <a href="product-details.php" title="Quickview"><i class="pe-7s-look"></i></a>
-                                    <!-- <a href="product-details.php" title="Compare"><i class="pe-7s-repeat"></i></a> -->
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <h5 class="title"><a href="product-details.php">Le Parc Minotti Chair</a></h5>
-                                <span class="price"><span class="new">$169.00</span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product-item end -->
-                    <!-- product-item start -->
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-8">
-                        <div class="product-item text-center">
-                            <div class="product-img">
-                                <a class="image" href="product-details.php"><img
-                                        src="{{ asset('/') }}assets/front/img/product/1.jpg" alt="" /></a>
-                                <a href="cart#" class="add-to-cart">add to cart</a>
-                                <div class="action-btn fix">
-                                    <!-- <a href="wishlist#" title="Wishlist"><i class="pe-7s-like"></i></a> -->
-                                    <a href="product-details.php" title="Quickview"><i class="pe-7s-look"></i></a>
-                                    <!-- <a href="product-details.php" title="Compare"><i class="pe-7s-repeat"></i></a> -->
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <h5 class="title"><a href="product-details.php">Le Parc Minotti Chair</a></h5>
-                                <span class="price"><span class="new">$169.00</span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product-item end -->
-                    <!-- product-item start -->
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-8">
-                        <div class="product-item text-center">
-                            <div class="product-img">
-                                <a class="image" href="product-details.php"><img
-                                        src="{{ asset('/') }}assets/front/img/product/1.jpg" alt="" /></a>
-                                <a href="cart#" class="add-to-cart">add to cart</a>
-                                <div class="action-btn fix">
-                                    <!-- <a href="wishlist#" title="Wishlist"><i class="pe-7s-like"></i></a> -->
-                                    <a href="product-details.php" title="Quickview"><i class="pe-7s-look"></i></a>
-                                    <!-- <a href="product-details.php" title="Compare"><i class="pe-7s-repeat"></i></a> -->
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <h5 class="title"><a href="product-details.php">Le Parc Minotti Chair</a></h5>
-                                <span class="price"><span class="new">$169.00</span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product-item end -->
-                    <!-- product-item start -->
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-8">
-                        <div class="product-item text-center">
-                            <div class="product-img">
-                                <a class="image" href="product-details.php"><img
-                                        src="{{ asset('/') }}assets/front/img/product/1.jpg" alt="" /></a>
-                                <a href="cart#" class="add-to-cart">add to cart</a>
-                                <div class="action-btn fix">
-                                    <!-- <a href="wishlist#" title="Wishlist"><i class="pe-7s-like"></i></a> -->
-                                    <a href="product-details.php" title="Quickview"><i class="pe-7s-look"></i></a>
-                                    <!-- <a href="product-details.php" title="Compare"><i class="pe-7s-repeat"></i></a> -->
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <h5 class="title"><a href="product-details.php">Le Parc Minotti Chair</a></h5>
-                                <span class="price"><span class="new">$169.00</span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product-item end -->
-                    <!-- product-item start -->
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-8">
-                        <div class="product-item text-center">
-                            <div class="product-img">
-                                <a class="image" href="product-details.php"><img
-                                        src="{{ asset('/') }}assets/front/img/product/1.jpg" alt="" /></a>
-                                <a href="cart#" class="add-to-cart">add to cart</a>
-                                <div class="action-btn fix">
-                                    <!-- <a href="wishlist#" title="Wishlist"><i class="pe-7s-like"></i></a> -->
-                                    <a href="product-details.php" title="Quickview"><i class="pe-7s-look"></i></a>
-                                    <!-- <a href="product-details.php" title="Compare"><i class="pe-7s-repeat"></i></a> -->
-                                </div>
-                            </div>
-                            <div class="product-info">
-                                <h5 class="title"><a href="product-details.php">Le Parc Minotti Chair</a></h5>
-                                <span class="price"><span class="new">$169.00</span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- product-item end -->
+
 
                 </div>
             </div>

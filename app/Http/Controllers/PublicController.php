@@ -13,7 +13,7 @@ class PublicController extends Controller
      */
     public function index()
     {
-        //
+        return view('front.index');
     }
 
     /**
@@ -25,7 +25,17 @@ class PublicController extends Controller
     {
         return view('front.pages.shop');
     }
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function cart(Request $request)
+    {
+        return view('front.pages.cart');
+        // dd($request->input());
+    }
     /**
      * Store a newly created resource in storage.
      *

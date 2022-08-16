@@ -105,29 +105,19 @@
                                     </div>
                                     <!-- Cart Products -->
                                     <div class="all-cart-product cart clearfix">
-                                        <div class="single-cart clearfix">
-                                            <div class="cart-image">
-                                                <a href="product-details.php"><img
-                                                        src="{{ asset('/') }}assets/front/img/product/cart-1.jpg"
-                                                        alt="Image"></a>
-                                            </div>
-                                            <div class="cart-info">
-                                                <h5><a href="product-details.php">Le Parc Minotti Chair</a></h5>
-                                                <p>Price : £9.00</p>
-                                                <p>Qty : 1</p>
-                                                <a href="#" class="cart-delete" title="Remove this item"><i
-                                                        class="pe-7s-trash"></i></a>
-                                            </div>
-                                        </div>
+
 
                                     </div>
                                     <!-- Cart Total -->
+                                    @csrf
                                     <div class="cart-totals">
-                                        <h5>Total <span class="total"></span></h5>
+                                        <h5>Total <span class="total"></span>
+                                            <input class="totali" hidden name="totalprice">
+                                        </h5>
                                     </div>
                                     <!-- Cart Button -->
                                     <div class="cart-bottom  clearfix">
-                                        <a href="checkout.php">Check out</a>
+                                        <a href="{{ route('cart') }}">Cart</a>
                                     </div>
                                 </div>
                             </div>
@@ -148,9 +138,9 @@
                     <button type="button" class="btn-modal-close" data-bs-dismiss="modal"><i
                             class="pe-7s-close"></i></button>
                     <div class="header-search-form">
-                        <form action="#">
-                            <input type="text" placeholder="Search">
-                            <button><i class="pe-7s-search"></i></button>
+                        <form action="{{ route('product.search') }}">
+                            <input type="text" name="query" placeholder="Search">
+                            <button type="submit"><i class="pe-7s-search"></i></button>
                         </form>
                     </div>
                 </div>

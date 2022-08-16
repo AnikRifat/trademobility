@@ -11,7 +11,7 @@
                         <h2>Shop</h2>
                         <ul class="breadcrumb">
                             <li><a href="index-2#">Home</a></li>
-                            <li class="active">shop</li>
+                            <li class="active">Search</li>
                         </ul>
                     </div>
                 </div>
@@ -26,9 +26,9 @@
                     <div class="col-xl-12 col-lg-12 col-12 order-lg-1 order-0">
                         <div class="shop-bar mb-6">
                             <!-- <ul class="shop-tablist nav">
-                                                                                            <li><a class="active" href="#product-grid" data-bs-toggle="tab"><i class="fa fa-th"></i></a></li>
-                                                                                            <li><a href="#product-list" data-bs-toggle="tab"><i class="fa fa-list"></i></a></li>
-                                                                                        </ul> -->
+                                                                                                    <li><a class="active" href="#product-grid" data-bs-toggle="tab"><i class="fa fa-th"></i></a></li>
+                                                                                                    <li><a href="#product-list" data-bs-toggle="tab"><i class="fa fa-list"></i></a></li>
+                                                                                                </ul> -->
                             <div class="item-per-page">
                                 <select>
                                     <option value="1">9 items/pages</option>
@@ -43,7 +43,7 @@
                             <div class="tab-pane active" id="product-grid">
                                 <div class="row">
                                     <!-- product-item start -->
-                                    @foreach ($products as $product)
+                                    @foreach ($data as $product)
                                         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mb-8">
                                             <div class="product-item text-center">
                                                 <div class="product-img">
@@ -51,7 +51,7 @@
                                                             src="{{ asset('/') }}assets/images/product/{{ $product->image }}"
                                                             alt="" /></a>
                                                     <button type="button" class="add-to-cart"
-                                                        onclick="cartLS.add({id: {{ $product->id }}, name: '{{ $product->name }}',image:'{{ $product->image }}', price: {{ $product->price }}})">add
+                                                        onclick="cartLS.add({id: {{ $product->id }}, name: '{{ $product->name }}', price: {{ $product->price }}})">add
                                                         to
                                                         cart</button>
                                                     <div class="action-btn fix">
