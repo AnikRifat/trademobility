@@ -1,3 +1,13 @@
+/* Set the width of the sidebar to 250px (show it) */
+function openNav() {
+    document.getElementById("mySidepanel").style.width = "250px";
+  }
+  
+  /* Set the width of the sidebar to 0 (hide it) */
+  function closeNav() {
+    document.getElementById("mySidepanel").style.width = "0";
+  }
+
 (function($) {
     "use strict";
 
@@ -157,22 +167,7 @@ $('.ui-slider-handle:eq(0)').html( '<span>' + '$' + $( "#price-range" ).slider( 
 $('.ui-slider-handle:eq(1)').html( '<span>' + '$' + $( "#price-range" ).slider( "values", 1 ) + '</span>' );    
 
 /*-- Product Quantity --*/ 
-$('.product-quantity').append('<span class="dec qtybtn"><i class="fa fa-angle-left"></i></span><span class="inc qtybtn"><i class="fa fa-angle-right"></i></span>');
-$('.qtybtn').on('click', function() {
-    var $button = $(this);
-    var oldValue = $button.parent().find('input').val();
-    if ($button.hasClass('inc')) {
-        var newVal = parseFloat(oldValue) + 1;
-    } else {
-        // Don't allow decrementing below zero
-        if (oldValue > 0) {
-            var newVal = parseFloat(oldValue) - 1;
-        } else {
-            newVal = 0;
-        }
-    }
-    $button.parent().find('input').val(newVal);
-});
+
 
 /*-- Checkout Form Collapse on Checkbox --*/ 
 $('.checkout-form input[type="checkbox"]').on('click', function(){

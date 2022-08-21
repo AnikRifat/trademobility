@@ -25,6 +25,7 @@
                                             <th>unit</th>
                                             <th>image</th>
                                             <th>category</th>
+                                            <th>sub category</th>
                                             <th>action</th>
                                         </tr>
                                     </thead>
@@ -40,6 +41,7 @@
                                                         src="{{ asset('/') }}assets/images/product/{{ $item->image }}"
                                                         alt=""> </td>
                                                 <td>{{ $item->category?->name }}</td>
+                                                <td>{{ $item->subcategory?->name }}</td>
                                                 <td>
                                                     <form action="{{ route('product.delete', $item->id) }}" method="post">
                                                         @csrf

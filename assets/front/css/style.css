@@ -1510,7 +1510,7 @@ a.meanmenu-reveal i {
 
 .single-cart .cart-info p {
   margin: 0;
-  font-size: 14px;
+  font-size: .6rem;
 }
 
 .single-cart .cart-info .cart-delete {
@@ -4196,4 +4196,59 @@ a.meanmenu-reveal i {
 
 .comment-form form input[type="submit"]:hover {
   background-color: #ffae00;
+}
+
+
+
+
+
+
+/* The sidepanel menu */
+.sidepanel {
+  height: 100vh;
+  /* Specify a height */
+  width: 0;
+  /* 0 width - change this with JavaScript */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1000000;
+  /* Stay on top */
+  top: 0;
+  right: 0;
+  background-color: #fdfdfd;
+  /* Black*/
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  padding-top: 60px;
+  /* Place content 60px from the top */
+  transition: 0.5s;
+  /* 0.5 second transition effect to slide in the sidepanel */
+}
+
+/* The sidepanel links */
+.sidepanel a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: .8rem;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidepanel a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.cart-box {
+  padding: 10px;
 }

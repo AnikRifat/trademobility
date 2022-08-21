@@ -69,7 +69,7 @@
                                             src="{{ asset('/') }}assets/images/product/{{ $product->image }}"
                                             alt="" /></a>
                                     <button type="button" class="add-to-cart"
-                                        onclick="cartLS.add({id: {{ $product->id }}, name: '{{ $product->name }}', price: {{ $product->price }}})">add
+                                        onclick="cartLS.add({id: {{ $product->id }}, name: '{{ $product->name }}',image:'{{ $product->image }}', price: {{ $product->price }}})">add
                                         to
                                         cart</button>
                                     <div class="action-btn fix">

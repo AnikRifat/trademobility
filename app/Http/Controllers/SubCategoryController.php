@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SubCategory;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
-class PublicController extends Controller
+class SubCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,8 @@ class PublicController extends Controller
      */
     public function index()
     {
-        return view('front.index');
+        $subcategories = SubCategory::all();
+        return view('admin.pages.subcategory.index', compact('subcategories'));
     }
 
     /**
@@ -21,25 +24,11 @@ class PublicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function shop()
+    public function create()
     {
-        return view('front.pages.shop');
+        //
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function cart(Request $request)
-    {
-        return view('front.pages.cart');
-        // dd($request->input());
-    }
-    public function checkout()
-    {
-        return view('front.pages.checkout');
-    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -48,7 +37,16 @@ class PublicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'category_id' => 'required',
+        ]);
+
+        $input = $request->all();
+        // dd($input);
+        SubCategory::create($input);
+
+        return redirect()->route('viewsubcategory')->with('success', 'Category Added Scueesfully.');
     }
 
     /**
@@ -59,7 +57,11 @@ class PublicController extends Controller
      */
     public function show($id)
     {
-        //
+        // dd($id);
+        // return $subcategory;
+        $data = SubCategory::where('category_id', $id)->get();
+        // $data = SubCategory::where('category_id', $subcategory)->get();
+        return $data;
     }
 
     /**
@@ -70,7 +72,6 @@ class PublicController extends Controller
      */
     public function edit($id)
     {
-        //
     }
 
     /**

@@ -155,7 +155,7 @@ class ProductController extends Controller
     {
         // dd($request->input());
         // return $request->input();
-        $data = Product::where('name', 'like', '%' . $request->input('query') . '%')->get();
+        $data = Product::where('name || categories', 'like', '%' . $request->input('query') . '%')->get();
         // dd($data);
 
         return view('front.pages.search', compact('data'));

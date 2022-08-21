@@ -27,6 +27,11 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{ route('viewsubcategory') }}">
+                                <span data-key="t-chat">Sub Category</span>
+                            </a>
+                        </li>
+                        <li>
                             <a href="{{ route('addproduct') }}">
                                 <span data-key="t-chat">Add Products</span>
                             </a>

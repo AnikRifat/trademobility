@@ -151,73 +151,60 @@
 <!-- Ajax Mail js -->
 <script src="{{ asset('/') }}assets/front/js/ajax-mail.js"></script>
 <!-- cart js -->
-<script src="{{ asset('/') }}assets/front/js/cart.js"></script>
 <!-- Main js -->
+<script src="{{ asset('/') }}assets/front/js/cart.js"></script>
 <script src="{{ asset('/') }}assets/front/js/main.js"></script>
 <script>
     function renderCart(items) {
         const $cart = document.querySelector(".cart")
-        const $cartcheck = document.querySelector(".cartcheck")
-        const $total = document.querySelector(".total")
-        const $totali = document.querySelector(".totali")
-
+        const $count = document.querySelector(".itemstotal")
         $cart.innerHTML = items.map((item) => `
-
-
-                                         <div class="single-cart clearfix">
-                                            <div class="cart-image">
-                                                <a href="product-details.php"><img
-                                                        src="{{ asset('/') }}assets/images/product/${item.image}"
-                                                        alt="Image"></a>
-                                            </div>
-                                            <div class="cart-info">
-                                                <h5><a href="product-details.php">${item.name}</a></h5>
-                                                <p>Price : ${item.price}</p>
-                                                <p>Qty : ${item.quantity}</p>
-                                                <button type="button" href="#" class="cart-delete" title="Remove this item" onClick="cartLS.remove(${item.id})"><i
-                                                        class="pe-7s-trash"></i></button>
-                                            </div>
-                                        </div>`).join("")
-
-        $cartcheck.innerHTML = items.map((item) => `
-                                         <tr>
-                                            <td class="pro-thumbnail"><a href="product-details.html"><img
-                                                        src="{{ asset('/') }}assets/images/product/${item.image}" alt="Image" /></a></td>
-                                            <td class="pro-title"><a href="product-details.html">${item.name}</a>
-                                            </td>
-                                            <td class="pro-price"><span class="amount"> $ ${item.price}</span></td>
-                                            <td class="pro-quantity">
-                                                <div class="product-quantity"><input type="text" value="1" /></div>
-                                            </td>
-                                            <td class="pro-subtotal">${item.price}</td>
-                                            <td class="pro-remove"><a href="#/">×</a></td>
-                                        </tr>
-        `).join("")
-
-        $total.innerHTML = "$" + cartLS.total()
-        $totali.value = cartLS.total()
-        // console.log(cartLS.total);
+<div class="single-cart clearfix">
+									<div class="cart-image">
+										<a href="product-details.php"><img
+												// src="{{ asset('/') }}assets/images/product/${item.image}"
+												alt="Image"></a>
+									</div>
+									<div class="cart-info">
+										<h5><a href="product-details.php">${item.name}</a></h5>
+										<a type="button" href="#" class="cart-delete" title="Remove this item" onClick="cartLS.remove(${item.id})"><i
+												class="pe-7s-trash"></i></a>
+									</div>
+								</div>`)
+        $count.innerHTML = JSON.parse(localStorage.getItem('__cart')).length;
+        document.querySelector(".totali").innerHTML = "$" + cartLS.total()
     }
     renderCart(cartLS.list())
     cartLS.onChange(renderCart)
+
+    function renderCheckout(items) {
+        const $cartcheck = document.querySelector(".cartcheck")
+        $cartcheck.innerHTML = items.map((item) => `
+								  <tr>
+									 <td class="pro-thumbnail"><a href="product-details.html"><img
+												 src="{{ asset('/') }}assets/images/product/${item.image}" alt="Image" /></a></td>
+									 <td class="pro-title"><a href="product-details.html">${item.name}</a>
+									 </td>
+									 <td class="pro-price"><span class="amount"> $ ${item.price}</span></td>
+									 <td class="pro-quantity">
+										 <div class="product-quantity"><input type="text" value="${item.quantity}">
+											<span class="dec qtybtn" ><i class="fa fa-angle-left" onClick="cartLS.quantity(${item.id},-1)"></i></span>
+											<span class="inc qtybtn"><i class="fa fa-angle-right" onClick="cartLS.quantity(${item.id},1)"></i></span>
+											</div>
+									 </td>
+									 <td class="pro-subtotal">${item.price * item.quantity}</td>
+									 <td class="pro-remove"><a onClick="cartLS.remove(${item.id})">×</a></td>
+								 </tr>
+ `)
+
+        document.querySelector(".totali").innerHTML = "$" + cartLS.total()
+        // console.log(total())
+    }
+    renderCheckout(cartLS.list())
+    cartLS.onChange(renderCheckout)
 </script>
 </body>
 
 
 
 </html>
-{{-- <tr>
-						<td>#${item.id}</td>
-						<td>${item.name}</td>
-						<td>${item.quantity}</td>
-						<td style="width: 60px;">	
-							<button type="button" class="btn btn-block btn-sm btn-outline-primary"
-								onClick="cartLS.quantity(${item.id},1)">+</button>
-						</td>
-						<td style="width: 60px;">	
-							<button type="button" class="btn btn-block btn-sm btn-outline-primary"
-								onClick="cartLS.quantity(${item.id},-1)">-</button>
-						</td>
-						<td class="text-right">$${item.price}</td>
-						<td class="text-right"><Button class="btn btn-primary" onClick="cartLS.remove(${item.id})">Delete</Button></td>
-					</tr> --}}

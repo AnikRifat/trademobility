@@ -81,8 +81,8 @@
                                             data-bs-toggle="dropdown" aria-expanded="false"><i
                                                 class="pe-7s-config"></i></a>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownAccountBtn">
-                                            <li><a href="login.php">Log in</a></li>
-                                            <li><a href="register.php">Register</a></li>
+                                            <li><a href="{{ route('login') }}">Log in</a></li>
+                                            <li><a href="{{ route('register') }}">Register</a></li>
                                             <li><a href="#">My Account</a></li>
                                             <li><a href="wishlist.php">Wish list</a></li>
                                             <li><a href="checkout.php">Checkout</a></li>
@@ -91,15 +91,16 @@
                                 </ul>
                             </div>
                             <!-- Header Cart -->
-                            <div class="header-cart float-start">
-                                <!-- Cart Toggle -->
-                                <a class="cart-toggle dropdown-toggle" href="#" data-toggle="dropdown"
-                                    id="dropdownCartBtn" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="pe-7s-cart"></i>
-                                    <span>2</span>
-                                </a>
-                                <!-- Mini Cart Brief -->
-                                <div class="mini-cart-brief dropdown-menu" aria-labelledby="dropdownCartBtn">
+                            @if (request()->is('cart*'))
+                            @else
+                                <div class="header-cart float-start">
+                                    <!-- Cart Toggle -->
+                                    <a class="cart-toggle" onclick="openNav()" href="#">
+                                        <i class="pe-7s-cart"></i>
+                                        <span class="itemstotal"></span>
+                                    </a>
+                                    <!-- Mini Cart Brief -->
+                                    {{-- <div class="mini-cart-brief dropdown-menu" aria-labelledby="dropdownCartBtn">
                                     <div class="cart-items">
                                         <p>You have <span>2 items</span> in your shopping bag</p>
                                     </div>
@@ -119,8 +120,9 @@
                                     <div class="cart-bottom  clearfix">
                                         <a href="{{ route('cart') }}">Cart</a>
                                     </div>
+                                </div> --}}
                                 </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -148,3 +150,7 @@
         </div>
 
         <div class="wrapper">
+            <div id="mySidepanel" class="sidepanel">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                @include('front.inc.cart')
+            </div>

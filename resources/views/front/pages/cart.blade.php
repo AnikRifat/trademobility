@@ -59,20 +59,20 @@
                                 <h3>Cart Totals</h3>
                                 <table>
                                     <tbody>
-                                        <tr class="cart-subtotal">
+                                        {{-- <tr class="cart-subtotal">
                                             <th>Subtotal</th>
                                             <td><span class="amount">$306.00</span></td>
-                                        </tr>
+                                        </tr> --}}
                                         <tr class="order-total">
                                             <th>Total</th>
                                             <td>
-                                                <strong><span class="amount">$306.00</span></strong>
+                                                <strong><span class="totali"></span></strong>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                                 <div class="proceed-to-checkout section mt-30">
-                                    <a href="#/">Proceed to Checkout</a>
+                                    <a href="{{ route('checkout') }}">Proceed to Checkout</a>
                                 </div>
                             </div>
                         </div>
