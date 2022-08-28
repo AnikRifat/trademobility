@@ -129,7 +129,7 @@ class ProductController extends Controller
         // dd($input);
         $product->update($input);
 
-        return redirect()->route('product.index')->with('success', 'blog uploader Scueesfully.');
+        return redirect()->route('product.index')->with('success', 'product uploaded Scueesfully.');
     }
 
     /**
