@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class PublicController extends Controller
@@ -88,11 +90,13 @@ class PublicController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Product  $product
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function categoryProduct(Request  $request)
     {
-        //
+        $data = Product::where('category_id', $request)->get();
+        dd($data);
     }
 }

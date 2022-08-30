@@ -43,7 +43,8 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'details' => 'required',
-            'image' => 'required|image|mimes:jpg,jpeg,png|max:2024',
+            'description' => 'required',
+            'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:2024',
             'price' => 'required',
             'unit' => 'required',
             'category_id' => 'required',
@@ -53,9 +54,21 @@ class ProductController extends Controller
 
         if ($image = $request->file('image')) {
             $filePath = 'assets/images/product/';
-            $setImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $setImage = date('YmdHis') . "_1" . "." . $image->getClientOriginalExtension();
             $image->move($filePath, $setImage);
             $input['image'] = $setImage;
+        }
+        if ($image = $request->file('image_2')) {
+            $filePath = 'assets/images/product/';
+            $setImage = date('YmdHis') . "_2" . "." . $image->getClientOriginalExtension();
+            $image->move($filePath, $setImage);
+            $input['image_2'] = $setImage;
+        }
+        if ($image = $request->file('image_3')) {
+            $filePath = 'assets/images/product/';
+            $setImage = date('YmdHis') . "_3" . "." . $image->getClientOriginalExtension();
+            $image->move($filePath, $setImage);
+            $input['image_3'] = $setImage;
         }
         // dd($input);
         Product::create($input);
@@ -110,7 +123,7 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'details' => 'required',
-            // 'image' => 'required|image|mimes:jpg,jpeg,png|max:2024',
+            'description' => 'required',
             'price' => 'required',
             'unit' => 'required',
             'category_id' => 'required',
@@ -120,16 +133,32 @@ class ProductController extends Controller
 
         if ($image = $request->file('image')) {
             $filePath = 'assets/images/product/';
-            $setImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $setImage = date('YmdHis') . "_1" . "." . $image->getClientOriginalExtension();
             $image->move($filePath, $setImage);
             $input['image'] = $setImage;
         } else {
             unset($input['image']);
         }
+        if ($image = $request->file('image_2')) {
+            $filePath = 'assets/images/product/';
+            $setImage = date('YmdHis') . "_2" . "." . $image->getClientOriginalExtension();
+            $image->move($filePath, $setImage);
+            $input['image_2'] = $setImage;
+        } else {
+            unset($input['image_2']);
+        }
+        if ($image = $request->file('image_3')) {
+            $filePath = 'assets/images/product/';
+            $setImage = date('YmdHis') . "_3" . "." . $image->getClientOriginalExtension();
+            $image->move($filePath, $setImage);
+            $input['image_3'] = $setImage;
+        } else {
+            unset($input['image_3']);
+        }
         // dd($input);
         $product->update($input);
 
-        return redirect()->route('product.index')->with('success', 'product uploaded Scueesfully.');
+        return redirect()->route('product.index')->with('success', 'product updated Scueesfully.');
     }
 
     /**

@@ -1482,7 +1482,7 @@ a.meanmenu-reveal i {
 .single-cart .cart-image {
   display: block;
   float: left;
-  margin-right: 15px;
+  margin-right: 5px;
   width: 75px;
 }
 
@@ -1528,9 +1528,11 @@ a.meanmenu-reveal i {
 
 /*-- Cart Total --*/
 .cart-totals {
+  background: #ffae00;
+  /* color: antiquewhite; */
   padding: 10px 20px;
-  margin: 0 -20px;
-  margin-bottom: 15px;
+  /* margin: 0 -20px; */
+  margin-bottom: 0px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
 }
@@ -1539,17 +1541,23 @@ a.meanmenu-reveal i {
   display: block;
   margin: 0;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #fdfdfd;
 }
 
 .cart-totals h5 span {
   display: block;
   float: right;
+  margin-left: .8rem;
 }
 
 /*-- Cart Button --*/
 .cart-bottom {
+  position: fixed;
+  bottom: 5px;
   text-align: center;
+  width: -webkit-fill-available;
 }
 
 .cart-bottom a {
@@ -4202,35 +4210,40 @@ a.meanmenu-reveal i {
 
 
 
+.openav {
+  width: 350px !important;
+}
 
 /* The sidepanel menu */
 .sidepanel {
+  box-shadow: -1px 0px 17px -4px rgba(0, 0, 0, 0.75);
+  width: 0px;
   height: 100vh;
   /* Specify a height */
-  width: 0;
+  /* border-left: 1px solid #e5e5e5; */
   /* 0 width - change this with JavaScript */
   position: fixed;
   /* Stay in place */
   z-index: 1000000;
   /* Stay on top */
-  top: 0;
-  right: 0;
-  background-color: #fdfdfd;
+  top: -1px;
+  right: 0px;
+  background-color: #ffffff;
   /* Black*/
   overflow-x: hidden;
   /* Disable horizontal scroll */
-  padding-top: 60px;
+  padding-top: 0px;
   /* Place content 60px from the top */
-  transition: 0.5s;
+  transition: 0.1s;
   /* 0.5 second transition effect to slide in the sidepanel */
 }
 
 /* The sidepanel links */
 .sidepanel a {
-  padding: 8px;
+  padding-right: 8px;
   text-decoration: none;
   font-size: .8rem;
-  color: #818181;
+  color: #ffb342;
   display: block;
   transition: 0.3s;
 }
@@ -4242,13 +4255,43 @@ a.meanmenu-reveal i {
 
 /* Position and style the close button (top right corner) */
 .sidepanel .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
+  /* position: absolute; */
+  /* top: 0; */
+  /* right: 25px; */
+  font-size: 3rem;
   margin-left: 50px;
+  color: #282828;
 }
 
 .cart-box {
   padding: 10px;
+}
+
+.word-limit {
+  lineClamp: 2;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.word-limit-2 {
+  display: block;
+  /* Fallback for non-webkit */
+  display: -webkit-box;
+  height: 2.6em;
+  /* Fallback for non-webkit, line-height * 2 */
+  line-height: 1.3em;
+  -webkit-line-clamp: 2;
+  /* if you change this, make sure to change the fallback line-height and height */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+h2.despro {
+  border-bottom: 2px solid #999797;
+  padding-bottom: 7px;
+  color: #ffae00;
 }

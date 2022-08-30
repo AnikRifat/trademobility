@@ -61,13 +61,13 @@
                 <!-- Footer Social -->
                 <div class="footer-social fix">
                     <a href="https://www.facebook.com/" target="_blank" rel="noopener"><i
-                            class="fa fa-facebook"></i></a>
+                          class="fa fa-facebook"></i></a>
                     <a href="https://www.instagram.com/" target="_blank" rel="noopener"><i
-                            class="fa fa-instagram"></i></a>
+                          class="fa fa-instagram"></i></a>
                     <a href="https://www.rss.com/" target="_blank" rel="noopener"><i class="fa fa-rss"></i></a>
                     <a href="https://www.twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter"></i></a>
                     <a href="https://www.pinterest.com/" target="_blank" rel="noopener"><i
-                            class="fa fa-pinterest"></i></a>
+                          class="fa fa-pinterest"></i></a>
                 </div>
             </div>
             <!-- Footer Widget -->
@@ -117,7 +117,7 @@
             <!-- Copyright -->
             <div class="copyright text-center text-md-start col-md-6 col-12">
                 <p>© 2022 Furnish. Made with <i class="fa fa-heart heart-icon"></i> By <a target="_blank"
-                        href="https://hasthemes.com/">HasThemes</a></p>
+                      href="https://hasthemes.com/">HasThemes</a></p>
             </div>
             <!-- Payment Method -->
             <div class="payment-method text-center text-md-end col-md-6 col-12">
@@ -156,22 +156,32 @@
 <script src="{{ asset('/') }}assets/front/js/main.js"></script>
 <script>
     function renderCart(items) {
-        const $cart = document.querySelector(".cart")
-        const $count = document.querySelector(".itemstotal")
-        $cart.innerHTML = items.map((item) => `
-<div class="single-cart clearfix">
+
+        
+
+
+        const cart = document.querySelector(".cart");
+        const count = document.querySelector(".itemstotal");
+        if (localStorage.getItem('__cart')) {
+         count.innerHTML = JSON.parse(localStorage.getItem('__cart')).length
+        } else {
+            count.innerHTML = 0
+        }
+        cart.innerHTML = items.map((item) => `
+                           <div class="single-cart clearfix">
 									<div class="cart-image">
 										<a href="product-details.php"><img
 												// src="{{ asset('/') }}assets/images/product/${item.image}"
 												alt="Image"></a>
 									</div>
 									<div class="cart-info">
-										<h5><a href="product-details.php">${item.name}</a></h5>
+										<p><a href="product-details.php" class="word-limit-2">${item.name}</a></p>
+                                        <p>Price : $ ${item.price}</p>
 										<a type="button" href="#" class="cart-delete" title="Remove this item" onClick="cartLS.remove(${item.id})"><i
 												class="pe-7s-trash"></i></a>
 									</div>
 								</div>`)
-        $count.innerHTML = JSON.parse(localStorage.getItem('__cart')).length;
+        // $count.innerHTML = JSON.parse(localStorage.getItem('__cart')).length;
         document.querySelector(".totali").innerHTML = "$" + cartLS.total()
     }
     renderCart(cartLS.list())
@@ -197,11 +207,14 @@
 								 </tr>
  `)
 
-        document.querySelector(".totali").innerHTML = "$" + cartLS.total()
-        // console.log(total())
+        document.querySelector(".total").innerHTML = "$" + cartLS.total()
+        //  console.log(cartLS.total());
     }
     renderCheckout(cartLS.list())
     cartLS.onChange(renderCheckout)
+
+
+
 </script>
 </body>
 

@@ -14,7 +14,7 @@
 
             <div class="card">
 
-                
+
 
                 <div class="col-12">
                     <div class="card">
@@ -41,7 +41,7 @@
                                     @foreach ($products as $item)
                                     <tr>
                                         <td>{{ $item->name }}</td>
-                                        <td>{{ $item->details }}</td>
+                                        <td>{!! $item->details !!}</td>
                                         <td>{{ $item->price }}</td>
                                         <td>{{ $item->unit }}</td>
                                         <td> <img height="100"

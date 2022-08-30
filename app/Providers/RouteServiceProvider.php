@@ -20,6 +20,7 @@ class RouteServiceProvider extends ServiceProvider
     public const ADMIN = '/admin';
     public const HOME = '/home';
     public const LOGIN = '/login';
+    public const REDIRECTTO = '/redirectTo';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.

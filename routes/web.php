@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
@@ -19,15 +20,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('front.index');
-});
+Route::get('/', [App\Http\Controllers\PublicController::class, 'index'])->name('index');
 Route::get('home', [App\Http\Controllers\PublicController::class, 'index'])->name('home');
 // Route::get('login', [App\Http\Controllers\PublicController::class, 'index'])->name('login');
 Route::get('cart', [App\Http\Controllers\PublicController::class, 'cart'])->name('cart');
 Route::get('checkout', [App\Http\Controllers\PublicController::class, 'checkout'])->name('checkout');
 Route::get('product.details/{product}', [App\Http\Controllers\ProductController::class, 'details'])->name('product.details');
 Route::get('product.search', [App\Http\Controllers\ProductController::class, 'search'])->name('product.search');
+Route::get('category', [App\Http\Controllers\PublicController::class, 'categoryProduct'])->name('category');
 
 
 Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
@@ -48,6 +48,10 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::get('product.index', [App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
 });
 
+Route::prefix('user')->middleware('auth', 'isUser')->group(function () {
+    Route::get('index', [App\Http\Controllers\UserController::class, 'index'])->name('user.index');
+});
+
 Route::get('findSubCat/{subcategory}', [App\Http\Controllers\SubCategoryController::class, 'show'])->name('findSubCat');
 
 Route::prefix('front')->group(function () {
@@ -59,4 +63,6 @@ Route::prefix('front')->group(function () {
 Auth::routes();
 
 
-Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
+Route::get('/redirectTo', [App\Http\Controllers\HomeController::class, 'redirectTo'])->name('redirectTo');
+Route::get('/admin', [App\Http\Controllers\HomeController::class, 'admin'])->name('admin');
+Route::get('/user', [App\Http\Controllers\HomeController::class, 'user'])->name('user');

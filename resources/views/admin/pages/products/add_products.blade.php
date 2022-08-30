@@ -25,6 +25,11 @@
                                   placeholder="product details" value=""></textarea>
                             </div>
                             <div class="mb-4">
+                                <label class="form-label" for="description">Product Description</label>
+                                <textarea class="form-control" type="text" id="ckeditor2" name="description"
+                                  placeholder="product description" value=""></textarea>
+                            </div>
+                            <div class="mb-4">
                                 <label class="form-label" for="price">Product price</label>
                                 <input class="form-control" type="text" id="price" name="price"
                                   placeholder="product price" value="">
@@ -36,9 +41,30 @@
                             </div>
                             <div class="mb-4">
 
-                                <label class="form-label" for="iamge">Product Image</label>
-                                <img src="#" alt="" height="200" width="200" hidden>
-                                <input class="form-control" type="file" id="image" name="image">
+                                <label class="form-label" for="image">Product Image 1</label>
+                                <br>
+                                <img src="{{ asset('/') }}assets/admin/images/thumb.png" alt=""
+                                  class="img-thumbnail mb-2" id="thm1" height="200" width="200">
+                                <input class="form-control" type="file" id="image" name="image"
+                                  onchange="readURL(this);">
+                            </div>
+                            <div class="mb-4">
+
+                                <label class="form-label" for="image_2">Product Image 2</label>
+                                <br>
+                                <img src="{{ asset('/') }}assets/admin/images/thumb.png" alt=""
+                                  class="img-thumbnail mb-2" id="thm2" height="200" width="200">
+                                <input class="form-control" type="file" id="image_2" name="image_2"
+                                  onchange="readURL2(this);">
+                            </div>
+                            <div class="mb-4">
+
+                                <label class="form-label" for="image_3">Product Image 3</label>
+                                <br>
+                                <img src="{{ asset('/') }}assets/admin/images/thumb.png" alt=""
+                                  class="img-thumbnail mb-2" id="thm3" height="200" width="200">
+                                <input class="form-control" type="file" id="image_3" name="image_3"
+                                  onchange="readURL3(this);">
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="category_id">Category Select</label>
@@ -67,20 +93,7 @@
 
 </div>
 <script>
-    async function genSubCat() {
-            const id = document.querySelector("#category_id").value;
-            const url = `{{ url('findSubCat') }}/${id}`;
-
-            document.getElementById('sub_cat_id').innerHTML = " ";
-
-            const res = await fetch(`${url}`);
-            let data = await res.json();
-
-            data.forEach((res) => {
-                document.getElementById('sub_cat_id').innerHTML +=
-                    `<option value="${res.id}">${res.name}</option>`;
-            });
-        }
+  
 </script>
 @endsection
 {{-- ((res => {

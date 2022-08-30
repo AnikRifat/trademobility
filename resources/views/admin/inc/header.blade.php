@@ -20,6 +20,8 @@
         <link rel="stylesheet" href="{{ asset('/') }}assets/admin/libs/sweetalert2/sweetalert2.min.css"
           type="text/css" />
 
+
+
         <link href="{{ asset('/') }}assets/admin/libs/alertifyjs/build/css/alertify.min.css" rel="stylesheet"
           type="text/css" />
         <!-- Bootstrap Css -->
@@ -27,8 +29,7 @@
           type="text/css" />
         <!-- Icons Css -->
         <link href="{{ asset('/') }}assets/admin/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <!-- App Css-->
-        <link href="{{ asset('/') }}assets/admin/css/filepond.css" rel="stylesheet" type="text/css" />
+
         <link href="{{ asset('/') }}assets/admin/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
     </head>
