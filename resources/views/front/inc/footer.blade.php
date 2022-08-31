@@ -158,14 +158,17 @@
     function renderCart(items) {
 
         
-
+        
 
         const cart = document.querySelector(".cart");
         const count = document.querySelector(".itemstotal");
+        const countt = document.querySelector(".itemstotalcart");
         if (localStorage.getItem('__cart')) {
          count.innerHTML = JSON.parse(localStorage.getItem('__cart')).length
+         countt.innerHTML = JSON.parse(localStorage.getItem('__cart')).length
         } else {
             count.innerHTML = 0
+            countt.innerHTML = 0
         }
         cart.innerHTML = items.map((item) => `
                            <div class="single-cart clearfix">

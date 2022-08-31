@@ -12,7 +12,7 @@
 <!-- Cart Products -->
 <div class="cart-box">
     <div class="cart-items">
-        <p>You have <span class="text-warning"> <strong class="itemstotal"> </strong> 2 items</span> in your shopping
+        <p>You have <span class="text-warning"> <strong class="itemstotalcart"> </strong> items</span> in your shopping
             bag</p>
     </div>
     <div class="all-cart-product cart clearfix">

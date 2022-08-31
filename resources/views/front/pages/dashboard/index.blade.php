@@ -9,11 +9,7 @@
         <div class="container">
             <div class="row">
                 <div class="page-banner-content col-xs-12">
-                    <h2>Shop list</h2>
-                    <ul class="breadcrumb">
-                        <li><a href="index-2.html">Home</a></li>
-                        <li class="active">shop list</li>
-                    </ul>
+                    <h2>{{ Auth::user()->name }} Dashboard</h2>
                 </div>
             </div>
         </div>
@@ -27,9 +23,9 @@
                 <div class="col-xl-12 col-lg-12 col-12 order-lg-1 order-1">
                     <div class="shop-bar mb-30">
                         <ul class="shop-tablist nav">
-                            <li><a href="#history" data-bs-toggle="tab"><i class="fa fa-th"></i></a></li>
-                            <li><a class="active" href="#info" data-bs-toggle="tab"><i class="fa fa-list"></i></a>
-                            <li><a class="active" href="#password" data-bs-toggle="tab"><i class="fa fa-list"></i></a>
+                            <li><a class="active" href="#history" data-bs-toggle="tab"><i class="fa fa-th"></i></a></li>
+                            <li><a href="#info" data-bs-toggle="tab"><i class="fa fa-list"></i></a>
+                            <li><a href="#password" data-bs-toggle="tab"><i class="fa fa-list"></i></a>
                             </li>
                         </ul>>
                     </div>

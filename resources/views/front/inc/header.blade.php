@@ -43,7 +43,8 @@
                 <div class="container-fluid">
                     <div class="row">
                         <!-- logo -->
-                        <div class="col-lg-2 col-sm-4 col-6">
+
+                        <div class="col-lg-2 col-sm-4 col-4">
                             <div class="header-logo">
                                 <a href="{{ route('index') }}"><img
                                       src="{{ asset('/') }}assets/images/logo/{{ $content->logo }}" alt="main logo"></a>
@@ -63,11 +64,27 @@
                                     <li><a href="{{ route('shop') }}">shop</a></li>
                                     <li><a href="#">About Us</a></li>
                                     <li><a href="#">Contact Us</a></li>
+                                    @auth
+                                    <li>
+                                        <form id="logout" action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                        </form>
+
+                                        <a class="d-block d-mb-none" onclick="logout()">Log
+                                            Out</a>
+                                    </li>
+                                    <li><a class="d-block d-mb-none" href="{{ route('user.index') }}">Dashboard</a>
+                                    </li>
+                                    @else
+                                    <li><a class="d-block d-mb-none" href="{{ route('login') }}">Log in</a></li>
+                                    <li><a class="d-block d-mb-none" href="{{ route('register') }}">Register</a>
+                                    </li>
+                                    @endauth
                                 </ul>
                             </nav>
                         </div>
                         <!-- header-search & total-cart -->
-                        <div class="col-lg-2 col-sm-8 col-6">
+                        <div class="col-lg-2 col-sm-8 col-4">
                             <div class="header-option-btns float-end">
                                 <!-- header-search -->
                                 <div class="header-search float-start">
@@ -79,87 +96,74 @@
                                     <ul>
                                         <li><a class="dropdown-toggle" href="#" id="dropdownAccountBtn"
                                               data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                  class="pe-7s-config"></i></a>
+                                                  class="pe-7s-user"></i></a>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownAccountBtn">
 
 
                                                 @auth
-                                                <li><a href="{{ route('logout') }}">Log Out</a></li>
+                                                <li>
+                                                    <form id="logout" action="{{ route('logout') }}" method="POST">
+                                                        @csrf
+                                                    </form>
+
+                                                    <a onclick="logout()">Log
+                                                        Out</a>
+                                                </li>
+                                                <li><a href="#">Dashboard</a></li>
                                                 @else
                                                 <li><a href="{{ route('login') }}">Log in</a></li>
                                                 <li><a href="{{ route('register') }}">Register</a></li>
                                                 @endauth
-
-
-
-                                                <li><a href="#">My Account</a></li>
-                                                <li><a href="wishlist.php">Wish list</a></li>
-                                                <li><a href="checkout.php">Checkout</a></li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </div>
                                 <!-- Header Cart -->
-                                @if (request()->is('cart*'))
-                                @else
-                                <div class="header-cart float-start">
-                                    <!-- Cart Toggle -->
-                                    <a class="cart-toggle" onclick="openNav()" href="#">
-                                        <i class="pe-7s-cart"></i>
-                                        <span class="itemstotal"></span>
-                                    </a>
-                                    <!-- Mini Cart Brief -->
-                                    {{-- <div class="mini-cart-brief dropdown-menu" aria-labelledby="dropdownCartBtn">
-                                    <div class="cart-items">
-                                        <p>You have <span>2 items</span> in your shopping bag</p>
-                                    </div>
-                                    <!-- Cart Products -->
-                                    <div class="all-cart-product cart clearfix">
 
-
-                                    </div>
-                                    <!-- Cart Total -->
-                                    @csrf
-                                    <div class="cart-totals">
-                                        <h5>Total <span class="total"></span>
-                                            <input class="totali" hidden name="totalprice">
-                                        </h5>
-                                    </div>
-                                    <!-- Cart Button -->
-                                    <div class="cart-bottom  clearfix">
-                                        <a href="{{ route('cart') }}">Cart</a>
-                                </div>
-                            </div> --}}
+                            </div>
                         </div>
-                        @endif
                     </div>
+                    <!-- Mobile Menu Nav -->
+                    <div class="mobile-menu"></div>
                 </div>
-        </div>
-        <!-- Mobile Menu Nav -->
-        <div class="mobile-menu"></div>
-        </div>
-        </header>
-        <!-- END HEADER SECTION -->
+            </header>
+            <!-- END HEADER SECTION -->
 
-        <!-- Search Modal -->
-        <div class="search-modal modal fade text-center" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-          aria-hidden="true">
-            <div class="modal-dialog modal-fullscreen">
-                <div class="modal-content">
-                    <button type="button" class="btn-modal-close" data-bs-dismiss="modal"><i
-                          class="pe-7s-close"></i></button>
-                    <div class="header-search-form">
-                        <form action="{{ route('product.search') }}">
-                            <input type="text" name="query" placeholder="Search">
-                            <button type="submit"><i class="pe-7s-search"></i></button>
-                        </form>
+            <!-- Search Modal -->
+            <div class="search-modal modal fade text-center" id="myModal" tabindex="-1"
+              aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <button type="button" class="btn-modal-close" data-bs-dismiss="modal"><i
+                              class="pe-7s-close"></i></button>
+                        <div class="header-search-form">
+                            <form action="{{ route('product.search') }}">
+                                <input type="text" name="query" placeholder="Search">
+                                <button type="submit"><i class="pe-7s-search"></i></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="wrapper">
-            <div id="mySidepanel" class="sidepanel">
-
-                @include('front.inc.cart')
+            @if (request()->is('cart*'))
+            @else
+            <div class="cart-item-box">
+                <button class="btn btn-rounded-0 btn-warning text-light cart-icon" onclick="openNav()"><i
+                      class="pe-7s-cart"></i></button>
+                <span class="itemstotal cart-item-count">2</span>
             </div>
+            @endif
+
+
+
+            <div class="wrapper">
+                <div id="mySidepanel" class="sidepanel">
+
+                    @include('front.inc.cart')
+                </div>
+                <script>
+                    function logout(){
+                    document.getElementById("logout").submit();
+                    
+                }
+                </script>

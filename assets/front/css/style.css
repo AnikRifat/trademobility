@@ -106,7 +106,7 @@ h6 {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 400;
-  line-height: 1.1;
+  /* line-height: 1.1; */
   margin-bottom: .625rem;
   margin-top: 0px;
 }
@@ -961,7 +961,7 @@ textarea:focus {
 
 .header-transparent {
   position: absolute;
-  z-index: 99999;
+  z-index: 99;
   left: 0;
   right: 0;
   top: 0;
@@ -1828,13 +1828,18 @@ a.meanmenu-reveal i {
       5.1 Grid Product
 ------------------------------*/
 /*-- Product Item --*/
-.product-item {}
+.product-item {
+  /* border: 4px solid #ffc107; */
+  /* border-radius: 5px; */
+  box-shadow: 0px 0px 8px 0px rgb(255 202 44 / 47%);
+}
 
 /*-- Product Image --*/
 .product-img {
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
   overflow: hidden;
   position: relative;
+  height: 18rem;
 }
 
 .product-img .image {
@@ -1863,7 +1868,7 @@ a.meanmenu-reveal i {
 
 /*-- Product Add to Cart --*/
 .product-img .add-to-cart {
-  background-color: #282828;
+  background-color: #ffc107;
   color: #fff;
   display: block;
   font-size: 13px;
@@ -1878,6 +1883,7 @@ a.meanmenu-reveal i {
   position: absolute;
   text-transform: uppercase;
   top: 50%;
+  border: 2px solid #fff;
   width: 140px;
 }
 
@@ -1897,6 +1903,7 @@ a.meanmenu-reveal i {
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
   width: 100%;
+  /* background: black; */
 }
 
 .product-item:hover .action-btn {
@@ -1928,15 +1935,22 @@ a.meanmenu-reveal i {
 }
 
 /*-- Product Info --*/
-.product-info {}
+.product-info {
+  padding: .5rem .4rem;
+  background: #ffc107;
+}
 
 .product-info .title {
   display: block;
-  font-size: 16px;
+  font-size: 14px;
   text-transform: capitalize;
+  color: #fff;
 }
 
-.product-info .title a {}
+.product-info .title a {
+  color: #fff;
+  font-weight: 600;
+}
 
 .product-info .price {
   display: block;
@@ -1949,6 +1963,11 @@ a.meanmenu-reveal i {
   line-height: 18px;
   margin: 0 5px;
   padding: 0 3px;
+  font-size: .8rem;
+  font-style: italic;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 .product-info .price .new {}
@@ -4294,4 +4313,37 @@ h2.despro {
   border-bottom: 2px solid #999797;
   padding-bottom: 7px;
   color: #ffae00;
+}
+
+.cart-item-box {
+  position: fixed;
+  right: 0;
+  z-index: 1;
+  top: 50%;
+  height: 3rem;
+  width: 3rem;
+  background: #ffc107;
+}
+
+button.btn.btn-rounded-0.btn-warning.text-light.cart-icon {
+  height: 100%;
+  padding: 0px;
+  font-size: 2.5rem;
+}
+
+span.itemstotal.cart-item-count {
+  position: absolute;
+  bottom: 25px;
+  left: 15px;
+  background: #3a3737;
+  color: #ffc107;
+  height: 1.4rem;
+  width: 1.4rem;
+  text-align: center;
+  border-radius: 50px;
+  font-size: .8rem;
+}
+
+div.modal {
+  z-index: 99;
 }
