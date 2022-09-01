@@ -54,10 +54,10 @@
             <!-- Footer Widget -->
             <div class="footer-widget col-lg-3 col-md-6 col-12 mb-8">
                 <h4 class="widget-title">Contact Info</h4>
-                <p><strong>Address :</strong> <span>28 Green Tower, Street Name, New York City, USA</span>
+                <p><strong>Address :</strong> <span>{{ $content->address }}</span>
                 </p>
-                <p><strong>Phone :</strong> <span>+8880 44338899</span></p>
-                <p><strong>Email :</strong> <a href="#">yourmail@outlook.com</a></p>
+                <p><strong>Phone :</strong> <span>{{ $content->phone }}</span></p>
+                <p><strong>Email :</strong> <a href="#">{{ $content->email }}</a></p>
                 <!-- Footer Social -->
                 <div class="footer-social fix">
                     <a href="https://www.facebook.com/" target="_blank" rel="noopener"><i
@@ -85,53 +85,29 @@
             <div class="footer-widget col-lg-3 col-md-6 col-12 mb-8">
                 <h4 class="widget-title">tags</h4>
                 <div class="tag-cloud fix">
-                    <a href="shop.html">brand</a>
-                    <a href="shop.html">fashion</a>
-                    <a href="shop.html">sale</a>
-                    <a href="shop.html">winter sale</a>
-                    <a href="shop.html">summer sale</a>
-                    <a href="shop.html">men</a>
-                    <a href="shop.html">women</a>
-                    <a href="shop.html">kids</a>
+                    @foreach ($categories as $category)
+                    <a href="#">{{ $category->name }}</a>
+                    @endforeach
+
+
                 </div>
             </div>
             <!-- Footer Widget -->
             <div class="footer-widget col-lg-3 col-md-6 col-12 mb-8">
-                <h4 class="widget-title">Newsletters</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adip isicing elit, sed do eiusmod tempor
-                    incididunt.</p>
-                <form class="sunscribe-form">
-                    <input type="email" class="email" placeholder="Email Address">
-                    <div class="clear"><input type="submit" class="button" value="Subscribe"></div>
-                </form>
+                <div class="payment-method text-center text-md-end col-md-6 col-12">
+                    <a href="shop.html">
+                        <img src="{{ asset('/') }}assets/front/img/payment/1.png" alt="payment" />
+                        <img src="{{ asset('/') }}assets/front/img/payment/2.png" alt="payment" />
+                        <img src="{{ asset('/') }}assets/front/img/payment/3.png" alt="payment" />
+                        <img src="{{ asset('/') }}assets/front/img/payment/4.png" alt="payment" />
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <!-- FOOTER TOP SECTION END -->
 
-<!-- FOOTER BOTTOM SECTION START -->
-<div class="footer-bottom-section section pb-20 pt-20">
-    <div class="container">
-        <div class="row">
-            <!-- Copyright -->
-            <div class="copyright text-center text-md-start col-md-6 col-12">
-                <p>© 2022 Furnish. Made with <i class="fa fa-heart heart-icon"></i> By <a target="_blank"
-                      href="https://hasthemes.com/">HasThemes</a></p>
-            </div>
-            <!-- Payment Method -->
-            <div class="payment-method text-center text-md-end col-md-6 col-12">
-                <a href="shop.html">
-                    <img src="{{ asset('/') }}assets/front/img/payment/1.png" alt="payment" />
-                    <img src="{{ asset('/') }}assets/front/img/payment/2.png" alt="payment" />
-                    <img src="{{ asset('/') }}assets/front/img/payment/3.png" alt="payment" />
-                    <img src="{{ asset('/') }}assets/front/img/payment/4.png" alt="payment" />
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- FOOTER BOTTOM SECTION END -->
 
 
 
@@ -154,6 +130,7 @@
 <!-- Main js -->
 <script src="{{ asset('/') }}assets/front/js/cart.js"></script>
 <script src="{{ asset('/') }}assets/front/js/main.js"></script>
+<script src="{{ asset('/') }}assets/front/js/intlTelInput.js"></script>
 <script>
     function renderCart(items) {
 

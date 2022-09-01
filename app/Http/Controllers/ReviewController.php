@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SubCategory;
-use App\Models\Category;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
-class SubCategoryController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        $subcategories = SubCategory::all();
-        return view('admin.pages.subcategory.index', compact('subcategories'));
+        return view('admin.pages.review.index');
     }
 
     /**
@@ -39,49 +37,46 @@ class SubCategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'category_id' => 'required',
+            'comment' => 'required',
         ]);
 
         $input = $request->all();
         // dd($input);
-        SubCategory::create($input);
+        Review::create($input);
 
-        return redirect()->route('viewsubcategory')->with('success', 'Category Added Scueesfully.');
+        return redirect()->route('viewreview')->with('success', 'Review Added Scueesfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Review $review)
     {
-        // dd($id);
-        // return $subcategory;
-        $data = SubCategory::where('category_id', $id)->get();
-        // $data = SubCategory::where('category_id', $subcategory)->get();
-        return $data;
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Review $review)
     {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Review $review)
     {
         //
     }
@@ -89,15 +84,13 @@ class SubCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SubCategory  $subcategory
+     * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SubCategory $subcategory)
+    public function destroy(Review $review)
     {
-        if ($subcategory->delete()) {
-            return redirect()->route('viewsubcategory')->with('success', 'Subcategory Deleted Scueesfully.');
-        } else {
-            return redirect()->route('viewsubcategory')->with('success', 'not ahppend.');
-        }
+        $review->delete();
+        // dd($category->delete());
+        return redirect()->route('viewreview')->with('success', 'Review Deleted Scueesfully.');
     }
 }

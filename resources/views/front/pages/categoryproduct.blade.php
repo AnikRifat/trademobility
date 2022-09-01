@@ -8,11 +8,8 @@
         <div class="container">
             <div class="row">
                 <div class="page-banner-content col-xs-12">
-                    <h2>Shop</h2>
-                    <ul class="breadcrumb">
-                        <li><a href="index-2#">Home</a></li>
-                        <li class="active">Search</li>
-                    </ul>
+                    <h2>{{ $cate->name }}</h2>
+
                 </div>
             </div>
         </div>
@@ -25,19 +22,6 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-12 order-lg-1 order-0">
                     <div class="shop-bar mb-6">
-                        <!-- <ul class="shop-tablist nav">
-                                                                                                    <li><a class="active" href="#product-grid" data-bs-toggle="tab"><i class="fa fa-th"></i></a></li>
-                                                                                                    <li><a href="#product-list" data-bs-toggle="tab"><i class="fa fa-list"></i></a></li>
-                                                                                                </ul> -->
-                        <div class="item-per-page">
-                            <select>
-                                <option value="1">9 items/pages</option>
-                                <option value="2">12 items/pages</option>
-                                <option value="3">15 items/pages</option>
-                                <option value="4">18 items/pages</option>
-                            </select>
-                        </div>
-                        <p>show item 1-9 of 36</p>
                     </div>
                     <div class="tab-content section">
                         <div class="tab-pane active" id="product-grid">

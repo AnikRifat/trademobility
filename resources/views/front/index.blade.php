@@ -3,7 +3,7 @@
 <div class="main-body">
     <!-- START SLIDER SECTION -->
     <div class="home-slider-section section">
-        <img src="{{ asset('/') }}assets/front/img/slider/1.jpg" alt="Image">
+        <img src="{{ asset('/') }}assets/images/{{ $content->slider }}" alt="Image">
         <!-- Caption 1 -->
         <div class="hero-static-caption">
             <div class="container">
@@ -12,14 +12,12 @@
                         <h4>welcome to our</h4>
                         <h1 class="tlt">
                             <span class="texts">
-                                <span>furniture gallery</span>
-                                <span>furniture fair</span>
-                                <span>furniture Store</span>
+                                <span>{{ $content->name }}</span>
+
                             </span>
                         </h1>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                            suffered alteration in some form.</p>
-                        <a href="product-details.html">Buy now</a>
+                        <p>{{ $content->slider_text }}</p>
+                        {{-- <a href="product-details.html">Buy now</a> --}}
                     </div>
                 </div>
             </div>
@@ -34,14 +32,16 @@
                 <!-- Banner Item Start -->
                 <div class="col-md-6 col-12 mb-6">
                     <div class="single-banner">
-                        <a href="shop.html"><img src="{{ asset('/') }}assets/front/img/banner/1.jpg" alt="Image"></a>
+                        <a href="shop.html"><img src="{{ asset('/') }}assets/images/{{ $content->tvc1 }}"
+                              alt="Image"></a>
                     </div>
                 </div>
                 <!-- Banner Item End -->
                 <!-- Banner Item Start -->
                 <div class="col-md-6 col-12 mb-6">
                     <div class="single-banner">
-                        <a href="shop.html"><img src="{{ asset('/') }}assets/front/img/banner/2.jpg" alt="Image"></a>
+                        <a href="shop.html"><img src="{{ asset('/') }}assets/images/{{ $content->tvc2 }}"
+                              alt="Image"></a>
                     </div>
                 </div>
                 <!-- Banner Item End -->
@@ -63,94 +63,44 @@
 
                 @foreach ($products as $product)
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mb-8">
-                    <div class="product-item">
-                        <div class="product-img">
-                            <a class="image" href="{{ route('product.details', $product->id) }}"><img
-                                  src="{{ asset('/') }}assets/images/product/{{ $product->image }}" alt="" /></a>
-                            {{-- <button type="button" class="add-to-cart"
-                              onclick="cartLS.add({id: {{ $product->id }}, name: '{{ $product->name }}',image:'{{
-                            $product->image }}', price: {{ $product->price }}})">add
-                            to
-                            cart</button> --}}
-                            {{-- <div class="action-btn fix text-center">
+                    @include('front.inc.product')
+                </div>
 
-                                <a href="{{ route('product.details', $product->id) }}" title="Quickview"><i
-                              class="pe-7s-look"></i></a>
-                        </div> --}}
-                    </div>
-                    <div class="product-info">
-                        <h5 class="title"><a class="word-limit-2" href="" {{ route('product.details', $product->id)
-                                }}">{{ $product->name }}</a>
-                        </h5>
-                        <div class="d-flex justify-content-between">
-                            <div>
-                                <span class="price"><span class="new">
-                                        price: ${{ $product->price }}.00</span>
-                                </span>
+                @endforeach
 
-                            </div>
-                            <div>
-                                <span class="price"><span class="new">
-                                        quantity: {{ $product->unit }} pc</span>
-                            </div>
+                <!-- product-item end -->
+
+
+            </div>
+        </div>
+    </div>
+    <!-- PRODUCT SECTION END -->
+
+    <!-- TESTIMONIAL SECTION START -->
+    @if($reviews)
+    <div class="testimonial-section section pt-100 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10  col-12 m-auto">
+                    <!-- Testimonial Slider -->
+                    <div class="testimonial-slider text-center">
+                        <!-- Single Testimonial -->
+                        @foreach ($reviews as $review)
+                        <div class="single-testimonial">
+                            <p>“ {{ $review->comment }} ”</p>
+                            <i class="pe-7s-way"></i>
+                            <h5>{{ $review->name }}</h5>
                         </div>
-
-                    </div>
-                </div>
-            </div>
-            @endforeach
-
-            <!-- product-item end -->
+                        @endforeach
 
 
-        </div>
-    </div>
-</div>
-<!-- PRODUCT SECTION END -->
-
-<!-- TESTIMONIAL SECTION START -->
-<div class="testimonial-section section pt-100 pb-100">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10  col-12 m-auto">
-                <!-- Testimonial Slider -->
-                <div class="testimonial-slider text-center">
-                    <!-- Single Testimonial -->
-                    <div class="single-testimonial">
-                        <img src="{{ asset('/') }}assets/front/img/testimonial/1.png" alt="Image">
-                        <p>“ Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
-                            Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium
-                            lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram.
-                            ”</p>
-                        <i class="pe-7s-way"></i>
-                        <h5>Grace Kelly</h5>
-                    </div>
-                    <!-- Single Testimonial -->
-                    <div class="single-testimonial">
-                        <img src="{{ asset('/') }}assets/front/img/testimonial/2.png" alt="Image">
-                        <p>“ Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
-                            Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium
-                            lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram.
-                            ”</p>
-                        <i class="pe-7s-way"></i>
-                        <h5>Diane Stevens</h5>
-                    </div>
-                    <!-- Single Testimonial -->
-                    <div class="single-testimonial">
-                        <img src="{{ asset('/') }}assets/front/img/testimonial/3.png" alt="Image">
-                        <p>“ Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
-                            Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium
-                            lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram.
-                            ”</p>
-                        <i class="pe-7s-way"></i>
-                        <h5>Mary Harper</h5>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- TESTIMONIAL SECTION END -->
+    @endif
+    <!-- TESTIMONIAL SECTION END -->
 
 
 </div>

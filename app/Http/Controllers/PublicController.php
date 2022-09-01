@@ -93,10 +93,14 @@ class PublicController extends Controller
      * @param  \App\Models\Product  $product
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * @param  int  $id
      */
-    public function categoryProduct(Request  $request)
+    public function categoryProduct($id)
     {
-        $data = Product::where('category_id', $request)->get();
-        dd($data);
+        // dd($id);
+        $data = Product::where('category_id', $id)->get();
+        $cate = Category::find($id);
+        // dd($name);
+        return view('front.pages.categoryproduct', compact('data', 'cate'));
     }
 }

@@ -27,7 +27,7 @@ Route::get('cart', [App\Http\Controllers\PublicController::class, 'cart'])->name
 Route::get('checkout', [App\Http\Controllers\PublicController::class, 'checkout'])->name('checkout');
 Route::get('product.details/{product}', [App\Http\Controllers\ProductController::class, 'details'])->name('product.details');
 Route::get('product.search', [App\Http\Controllers\ProductController::class, 'search'])->name('product.search');
-Route::get('category', [App\Http\Controllers\PublicController::class, 'categoryProduct'])->name('category');
+Route::get('category/{category_id}', [App\Http\Controllers\PublicController::class, 'categoryProduct'])->name('category');
 
 
 Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
@@ -36,9 +36,10 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::post('category.store', [App\Http\Controllers\CategoryController::class, 'store'])->name('createcategory');
     Route::delete('deleteCategory/{category}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('deleteCategory');
     Route::get('category', [App\Http\Controllers\CategoryController::class, 'index'])->name('viewcategory');
+
     Route::get('subcategory', [App\Http\Controllers\SubCategoryController::class, 'index'])->name('viewsubcategory');
     Route::post('subcategory.store', [App\Http\Controllers\SubCategoryController::class, 'store'])->name('createsubcategory');
-    Route::delete('deletesubCategory/{category}', [App\Http\Controllers\SubCategoryController::class, 'destroy'])->name('deletesubCategory');
+    Route::delete('deleteSubCategory/{subcategory}', [App\Http\Controllers\SubCategoryController::class, 'destroy'])->name('deleteSubCategory');
     Route::get('subcategory', [App\Http\Controllers\SubCategoryController::class, 'index'])->name('viewsubcategory');
     Route::post('storeproduct', [App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
     Route::get('addproduct', [App\Http\Controllers\ProductController::class, 'create'])->name('addproduct');
@@ -46,6 +47,9 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::put('product.update/{product}', [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
     Route::get('product.edit/{product}', [App\Http\Controllers\ProductController::class, 'edit'])->name('product.edit');
     Route::get('product.index', [App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
+    Route::post('review.store', [App\Http\Controllers\ReviewController::class, 'store'])->name('createreview');
+    Route::delete('deletereview/{review}', [App\Http\Controllers\ReviewController::class, 'destroy'])->name('deletereview');
+    Route::get('review', [App\Http\Controllers\ReviewController::class, 'index'])->name('viewreview');
 });
 
 Route::prefix('user')->middleware('auth', 'isUser')->group(function () {

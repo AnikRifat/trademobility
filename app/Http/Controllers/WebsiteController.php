@@ -69,11 +69,17 @@ class WebsiteController extends Controller
      */
     public function update(Request $request, Website $content)
     {
+
         $request->validate([
             'name' => 'required',
+            'slider_text' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
         ]);
 
         $input = $request->all();
+        // dd($input);
         if ($image = $request->file('logo')) {
             $filePath = 'assets/images/logo/';
             $setImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -82,10 +88,32 @@ class WebsiteController extends Controller
         } else {
             unset($input['logo']);
         }
-        //  dd($input);
-        // dd($content->update($input));
+        if ($image = $request->file('slider')) {
+            $filePath = 'assets/images/';
+            $setImage = date('YmdHis') . "_1" . "." . $image->getClientOriginalExtension();
+            $image->move($filePath, $setImage);
+            $input['slider'] = $setImage;
+        } else {
+            unset($input['slider']);
+        }
+        if ($image = $request->file('tvc1')) {
+            $filePath = 'assets/images/';
+            $setImage = date('YmdHis') . "_2" . "." . $image->getClientOriginalExtension();
+            $image->move($filePath, $setImage);
+            $input['tvc1'] = $setImage;
+        } else {
+            unset($input['tvc1']);
+        }
+        if ($image = $request->file('tvc2')) {
+            $filePath = 'assets/images/';
+            $setImage = date('YmdHis') . "_3" . "." . $image->getClientOriginalExtension();
+            $image->move($filePath, $setImage);
+            $input['tvc2'] = $setImage;
+        } else {
+            unset($input['tvc2']);
+        }
         $content->update($input);
-        // dd($content->update($input));
+
 
         return redirect()->route('content')->with('success', 'Settings updated Successfully.');
     }

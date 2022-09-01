@@ -27,11 +27,37 @@
         <link rel="stylesheet" href="{{ asset('/') }}assets/front/css/style.css">
         <!-- Responsive css -->
         <link rel="stylesheet" href="{{ asset('/') }}assets/front/css/responsive.css">
-
+        <link rel="stylesheet" href="{{ asset('/') }}assets/front/css/intlTelInput.css">
         <!-- Modernizr JS -->
         <script src="{{ asset('/') }}assets/front/js/vendor/modernizr-3.11.2.min.js"></script>
 
     </head>
+    <style>
+        .iti__flag {
+            background-image: url("=" {
+                        {
+                        asset('/')
+                    }
+                }
+
+                assets/front/img/flags.png");
+
+            }
+
+            @media (-webkit-min-device-pixel-ratio: 2),
+            (min-resolution: 192dpi) {
+                .iti__flag {
+                    background-image: url("=" {
+                                {
+                                asset('/')
+                            }
+                        }
+
+                        assets/front/img/flags@2x.png");
+
+                    }
+                }
+    </style>
 
     <body>
 
@@ -57,7 +83,9 @@
                                     <li class="active"><a href="index.php">Categories</a>
                                         <ul class="sub-menu">
                                             @foreach ($categories as $category)
-                                            <li><a href="#">{{ $category->name }}</a></li>
+                                            <li><a
+                                                  href="{{ route('category',$category->id) }}">{{ $category->name }}</a>
+                                            </li>
                                             @endforeach
                                         </ul>
                                     </li>
@@ -65,19 +93,19 @@
                                     <li><a href="#">About Us</a></li>
                                     <li><a href="#">Contact Us</a></li>
                                     @auth
+
+                                    <li><a class="d-block d-md-none" href="{{ route('user.index') }}">Dashboard</a>
+                                    </li>
                                     <li>
                                         <form id="logout" action="{{ route('logout') }}" method="POST">
                                             @csrf
                                         </form>
 
-                                        <a class="d-block d-mb-none" onclick="logout()">Log
+                                        <a class="d-block d-md-none" onclick="logout()">Log
                                             Out</a>
-                                    </li>
-                                    <li><a class="d-block d-mb-none" href="{{ route('user.index') }}">Dashboard</a>
-                                    </li>
-                                    @else
-                                    <li><a class="d-block d-mb-none" href="{{ route('login') }}">Log in</a></li>
-                                    <li><a class="d-block d-mb-none" href="{{ route('register') }}">Register</a>
+                                    </li> @else
+                                    <li><a class="d-block d-md-none" href="{{ route('login') }}">Log in</a></li>
+                                    <li><a class="d-block d-md-none" href="{{ route('register') }}">Register</a>
                                     </li>
                                     @endauth
                                 </ul>
@@ -109,7 +137,7 @@
                                                     <a onclick="logout()">Log
                                                         Out</a>
                                                 </li>
-                                                <li><a href="#">Dashboard</a></li>
+                                                <li><a href="{{ route('redirectTo') }}">Dashboard</a></li>
                                                 @else
                                                 <li><a href="{{ route('login') }}">Log in</a></li>
                                                 <li><a href="{{ route('register') }}">Register</a></li>
@@ -147,11 +175,11 @@
             </div>
             @if (request()->is('cart*'))
             @else
-            <div class="cart-item-box">
+            {{-- <div class="cart-item-box">
                 <button class="btn btn-rounded-0 btn-warning text-light cart-icon" onclick="openNav()"><i
                       class="pe-7s-cart"></i></button>
                 <span class="itemstotal cart-item-count">2</span>
-            </div>
+            </div> --}}
             @endif
 
 

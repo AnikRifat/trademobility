@@ -21,16 +21,7 @@
                         <span data-key="t-apps">Products Management</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li>
-                            <a href="{{ route('viewcategory') }}">
-                                <span data-key="t-chat">Category</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('viewsubcategory') }}">
-                                <span data-key="t-chat">Sub Category</span>
-                            </a>
-                        </li>
+
                         <li>
                             <a href="{{ route('addproduct') }}">
                                 <span data-key="t-chat">Add Products</span>
@@ -51,6 +42,25 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
                         <i data-feather="grid"></i>
+                        <span data-key="t-apps">Category</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('viewcategory') }}">
+                                <span data-key="t-chat">Category</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('viewsubcategory') }}">
+                                <span data-key="t-chat">Sub Category</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i data-feather="grid"></i>
                         <span data-key="t-apps">Websites</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
@@ -59,7 +69,11 @@
                                 <span data-key="t-calendar">Content</span>
                             </a>
                         </li>
-
+                        <li>
+                            <a href="{{ route('viewreview') }}">
+                                <span data-key="t-chat">Review</span>
+                            </a>
+                        </li>
                         <li>
                             <a href="#">
                                 <span data-key="t-chat">Color</span>
@@ -67,7 +81,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="menu-title mt-2" data-key="t-components">Elements</li>
+
 
 
 

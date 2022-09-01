@@ -17,7 +17,7 @@
     <!-- END PAGE BANNER SECTION -->
 
     <!-- PAGE SECTION START -->
-    <div class="page-section section pt-100 pb-60">
+    {{-- <div class="page-section section pt-100 pb-60">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-12 order-lg-1 order-1">
@@ -43,7 +43,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- PAGE SECTION END -->
 </div>
 @endsection
