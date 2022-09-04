@@ -36,8 +36,13 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::post('category.store', [App\Http\Controllers\CategoryController::class, 'store'])->name('createcategory');
     Route::delete('deleteCategory/{category}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('deleteCategory');
     Route::get('category', [App\Http\Controllers\CategoryController::class, 'index'])->name('viewcategory');
+    Route::get('editcategory/{category}', [App\Http\Controllers\CategoryController::class, 'edit'])->name('edit.category');
+    Route::put('updatecategory/{category}', [App\Http\Controllers\CategoryController::class, 'update'])->name('update.category');
+
 
     Route::get('subcategory', [App\Http\Controllers\SubCategoryController::class, 'index'])->name('viewsubcategory');
+    Route::get('editsubcategory/{subcategory}', [App\Http\Controllers\SubCategoryController::class, 'edit'])->name('edit.subcategory');
+    Route::put('updatesubcategory/{subcategory}', [App\Http\Controllers\SubCategoryController::class, 'update'])->name('update.subcategory');
     Route::post('subcategory.store', [App\Http\Controllers\SubCategoryController::class, 'store'])->name('createsubcategory');
     Route::delete('deleteSubCategory/{subcategory}', [App\Http\Controllers\SubCategoryController::class, 'destroy'])->name('deleteSubCategory');
     Route::get('subcategory', [App\Http\Controllers\SubCategoryController::class, 'index'])->name('viewsubcategory');

@@ -60,7 +60,6 @@
 
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Name</th>
                                     <th>Category</th>
                                     <th>Action</th>
@@ -69,16 +68,19 @@
                             <tbody>
                                 @foreach ($subcategories as $subcategory)
                                 <tr>
-
-
-                                    <th>{{ $subcategory->id }}</th>
                                     <td>{{ $subcategory->name }}</td>
-                                    <td>{{ $subcategory->category->name }}</td>
-                                    <td>
-                                        <form action="{{ route('deleteSubCategory', $subcategory->id) }}" method="post">
+                                    <td>{{ $subcategory->category->name ?? ' ' }}</td>
+                                    <td class="d-flex justify-content-around">
+                                        <a href="{{ route('edit.subcategory',$subcategory->id) }}"
+                                          class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+                                        <form action="{{ route('deleteSubCategory', $subcategory->id) }}"
+                                          id="dltform{{ $subcategory->id }}" method="post">
                                             @csrf
                                             @method('Delete')
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+
+                                            <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"
+                                                  onclick="dltItem({{ $subcategory->id }})"></i></button>
+
                                         </form>
 
                                     </td>
@@ -94,4 +96,27 @@
         </div>
     </div>
 </div>
+<script>
+    function dltItem(x){
+        Swal.fire({
+		title: "Are you sure?",
+		text: "If you delete this sub category, every products under this sub category will be deleted!",
+		icon: "warning",
+		showCancelButton: !0,
+		confirmButtonColor: "#fd625e",
+		CancelButtonColor: " #2ab57d",
+		confirmButtonText: "Yes, delete it!"
+	}).then(function(e) {
+        if (e.isConfirmed) {
+            let id = "dltform"+x;
+        // console.log(id);
+        document.getElementById(id).submit();
+
+  }
+	})
+
+    }
+
+
+</script>
 @endsection

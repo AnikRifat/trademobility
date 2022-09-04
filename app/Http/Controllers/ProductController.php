@@ -63,17 +63,21 @@ class ProductController extends Controller
             $setImage = date('YmdHis') . "_2" . "." . $image->getClientOriginalExtension();
             $image->move($filePath, $setImage);
             $input['image_2'] = $setImage;
+        } else {
+            $input['image_2'] = ' ';
         }
         if ($image = $request->file('image_3')) {
             $filePath = 'assets/images/product/';
             $setImage = date('YmdHis') . "_3" . "." . $image->getClientOriginalExtension();
             $image->move($filePath, $setImage);
             $input['image_3'] = $setImage;
+        } else {
+            $input['image_3'] = ' ';
         }
         // dd($input);
         Product::create($input);
 
-        return redirect()->route('product.index')->with('success', 'blog uploader Scueesfully.');
+        return redirect()->route('product.index')->with('success', 'Product added successfully.');
     }
 
     /**
@@ -173,7 +177,7 @@ class ProductController extends Controller
         // dd($category->delete());
         return redirect()->route('product.index')->with('success', 'Product Deleted Scueesfully.');
     }
-    /** 
+    /**
      * Remove the specified resource from storage.
      *
      * @param  \Illuminate\Http\Request  $request

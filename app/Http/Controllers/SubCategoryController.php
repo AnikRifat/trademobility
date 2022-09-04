@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SubCategory;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
@@ -46,7 +47,7 @@ class SubCategoryController extends Controller
         // dd($input);
         SubCategory::create($input);
 
-        return redirect()->route('viewsubcategory')->with('success', 'Category Added Scueesfully.');
+        return redirect()->route('viewsubcategory')->with('success', 'Sub Category added successfully.');
     }
 
     /**
@@ -68,22 +69,33 @@ class SubCategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     * @param  APP\Models\SubCategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SubCategory  $subcategory)
     {
+        return view('admin.pages.subcategory.edit_subcategory', compact('subcategory'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  APP\Models\SubCategory  $subcategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, SubCategory  $subcategory)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'category_id' => 'required',
+        ]);
+
+        $input = $request->all();
+        // dd($input);
+        $subcategory->update($input);
+
+        return redirect()->route('viewsubcategory')->with('success', 'Sub Category Updated successfully.');
     }
 
     /**
@@ -94,10 +106,19 @@ class SubCategoryController extends Controller
      */
     public function destroy(SubCategory $subcategory)
     {
-        if ($subcategory->delete()) {
-            return redirect()->route('viewsubcategory')->with('success', 'Subcategory Deleted Scueesfully.');
-        } else {
-            return redirect()->route('viewsubcategory')->with('success', 'not ahppend.');
+        if ($subcategory->product()->count() > 0){
+            if ($subcategory->product()->delete() && $subcategory->delete()) {
+                return redirect()->route('viewsubcategory')->with('success', 'Subcategory Deleted Scueesfully.');
+            } else {
+                return redirect()->route('viewsubcategory')->with('success', 'not ahppend.');
+            }
+        }else{
+            if ($subcategory->delete()) {
+                return redirect()->route('viewsubcategory')->with('success', 'Subcategory Deleted Scueesfully.');
+            } else {
+                return redirect()->route('viewsubcategory')->with('success', 'not ahppend.');
+            }
         }
+
     }
 }

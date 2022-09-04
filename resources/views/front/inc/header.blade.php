@@ -89,9 +89,10 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="{{ route('shop') }}">shop</a></li>
+                                    {{-- <li><a href="{{ route('shop') }}">shop</a></li> --}}
+                                    <li><a href="#shop">Our Products</a></li>
                                     <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="#footer">Contact Us</a></li>
                                     @auth
 
                                     <li><a class="d-block d-md-none" href="{{ route('user.index') }}">Dashboard</a>
@@ -192,6 +193,6 @@
                 <script>
                     function logout(){
                     document.getElementById("logout").submit();
-                    
+
                 }
                 </script>

@@ -40,7 +40,7 @@
                         <li class="nav-item waves-effect waves-light">
                             <a class="nav-link " data-bs-toggle="tab" href="#TVC" role="tab" aria-selected="true">
                                 <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
-                                <span class="d-none d-sm-block">TVC</span>
+                                <span class="d-none d-sm-block">Banner</span>
                             </a>
                         </li>
                         <li class="nav-item waves-effect waves-light">
@@ -66,7 +66,8 @@
                                       placeholder="Website name" value="{{ $content->name }}">
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label" for="logo">Website logo</label>
+                                    <label class="form-label" for="logo">Website logo <small>(400 x 330 px ||
+                                            PNG)</small></label>
                                     <img src="{{ asset('/') }}assets/images/logo/{{ $content->logo }}" alt=""
                                       height="200" width="200">
                                     <input class="form-control" type="file" id="logo" name="logo">
@@ -81,7 +82,7 @@
                                       placeholder="Slider Text" value="{{ $content->slider_text }}">
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label" for="slider">Website slider</label>
+                                    <label class="form-label" for="slider">Website slider <small>(PNG)</small></label>
                                     <img src="{{ asset('/') }}assets/images/{{ $content->slider }}" alt="" height="200"
                                       width="200">
                                     <input class="form-control" type="file" id="slider" name="slider">
@@ -92,13 +93,15 @@
                             <div class="tab-pane " id="TVC" role="tabpanel">
                                 <p class="mb-0">
                                 <div class="mb-4">
-                                    <label class="form-label" for="tvc1">Website tvc1</label>
+                                    <label class="form-label" for="tvc1">Website banner 1 <small>(570 x 285 px ||
+                                            PNG , JPG)</small></label>
                                     <img src="{{ asset('/') }}assets/images/{{ $content->tvc1 }}" alt="" height="200"
                                       width="200">
                                     <input class="form-control" type="file" id="tvc1" name="tvc1">
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label" for="tvc2">Website tvc2</label>
+                                    <label class="form-label" for="tvc2">Website banner 2 <small>(570 x 285 px ||
+                                            PNG , JPG)</small></label>
                                     <img src="{{ asset('/') }}assets/images/{{ $content->tvc2 }}" alt="" height="200"
                                       width="200">
                                     <input class="form-control" type="file" id="tvc2" name="tvc2">

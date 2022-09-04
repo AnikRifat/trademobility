@@ -37,6 +37,7 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -50,7 +51,7 @@ class CategoryController extends Controller
         // dd($input);
         Category::create($input);
 
-        return redirect()->route('viewcategory')->with('success', 'Category Added Scueesfully.');
+        return redirect()->route('viewcategory')->with('success', 'Category added successfully.');
     }
 
     /**
@@ -72,7 +73,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        
+        return view('admin.pages.category.edit_category', compact('category'));
     }
 
     /**
@@ -84,8 +85,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $input = $request->all();
+        // dd($input);
+        $category->update($input);
+
+        return redirect()->route('viewcategory')->with('success', 'Category Updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -95,8 +105,35 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->delete();
-        // dd($category->delete());
-        return redirect()->route('viewcategory')->with('success', 'Category Deleted Scueesfully.');
+        $subcatcount =  $category->subcategory()->count();
+        $productcount = $category->product()->count();
+
+
+
+        if ($productcount > 0 && $subcatcount > 0) {
+            if ($category->product()->delete() && $category->subcategory()->delete() && $category->delete()) {
+                return redirect()->route('viewcategory')->with('success', 'category Deleted Scueesfully.');
+            } else {
+                return redirect()->route('viewcategory')->with('success', 'not ahppend.');
+            }
+        } elseif ($productcount = 0 && $subcatcount > 0) {
+            if ($category->subcategory()->delete() && $category->delete()) {
+                return redirect()->route('viewcategory')->with('success', 'category Deleted Scueesfully.');
+            } else {
+                return redirect()->route('viewcategory')->with('success', 'not ahppend.');
+            }
+        } elseif ($productcount > 0 && $subcatcount = 0) {
+            if ($category->product()->delete() && $category->delete()) {
+                return redirect()->route('viewcategory')->with('success', 'category Deleted Scueesfully.');
+            } else {
+                return redirect()->route('viewcategory')->with('success', 'not ahppend.');
+            }
+        } else {
+            if ($category->delete()) {
+                return redirect()->route('viewcategory')->with('success', 'category Deleted Scueesfully.');
+            } else {
+                return redirect()->route('viewcategory')->with('success', 'not ahppend.');
+            }
+        }
     }
 }

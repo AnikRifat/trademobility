@@ -4,12 +4,11 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Dashboard |</title>
+        <title>{{ $content->name }}
+        </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-        <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('/') }}assets/admin/images/favicon.ico">
+        <link rel="shortcut icon" href="{{ asset('/') }}assets/images/logo/{{ $content->logo }}">
         <!-- plugin css -->
         <link href="{{ asset('/') }}assets/admin/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css"
           rel="stylesheet" type="text/css" />
@@ -47,7 +46,7 @@
                     <div class="d-flex">
                         <!-- LOGO -->
                         <div class="navbar-brand-box">
-                            <a href="index.html" class="logo logo-dark">
+                            <a href="{{ route('admin') }}" class="logo logo-dark">
                                 <span class="logo-sm">
                                     <img src="{{ asset('/') }}assets/images/logo/{{ $content->logo }}" alt=""
                                       height="24">
@@ -59,7 +58,7 @@
                                 </span>
                             </a>
 
-                            <a href="index.html" class="logo logo-light">
+                            <a href="{{ route('admin') }}" class="logo logo-light">
                                 <span class="logo-sm">
                                     <img src="{{ asset('/') }}assets/images/logo/{{ $content->logo }}" alt=""
                                       height="24">
@@ -134,10 +133,10 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
-                                <a class="dropdown-item" href="apps-contacts-profile.html"><i
+                                {{-- <a class="dropdown-item" href="apps-contacts-profile.html"><i
                                       class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> Profile</a>
                                 <a class="dropdown-item" href="auth-lock-screen.html"><i
-                                      class="mdi mdi-lock font-size-16 align-middle me-1"></i> Lock Screen</a>
+                                      class="mdi mdi-lock font-size-16 align-middle me-1"></i> Lock Screen</a> --}}
                                 <div class="dropdown-divider"></div>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf

@@ -10,7 +10,7 @@
                 <li class="menu-title" data-key="t-menu">Menu</li>
 
                 <li>
-                    <a href="index.html">
+                    <a href="{{ route('admin') }}">
                         <i data-feather="home"></i>
                         <span data-key="t-dashboard">Dashboard</span>
                     </a>
@@ -30,11 +30,6 @@
                         <li>
                             <a href="{{ route('product.index') }}">
                                 <span data-key="t-chat">View Products</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span data-key="t-chat">Color</span>
                             </a>
                         </li>
                     </ul>
@@ -71,12 +66,7 @@
                         </li>
                         <li>
                             <a href="{{ route('viewreview') }}">
-                                <span data-key="t-chat">Review</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span data-key="t-chat">Color</span>
+                                <span data-key="t-chat">Testimonial</span>
                             </a>
                         </li>
                     </ul>

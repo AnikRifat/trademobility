@@ -20,9 +20,9 @@
                                   value="">
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="details">Product details</label>
+                                <label class="form-label" for="details">Product quick view</label>
                                 <textarea class="form-control" type="text" id="ckeditor1" name="details"
-                                  placeholder="product details" value=""></textarea>
+                                  placeholder="product qwick view" value=""></textarea>
                             </div>
                             <div class="mb-4">
                                 <label class="form-label" for="description">Product Description</label>
@@ -76,7 +76,7 @@
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label class="form-label" for="sub_category_id">Category Select</label>
+                                <label class="form-label" for="sub_category_id">Sub Category Select</label>
                                 <select class="form-select" id="sub_cat_id" name="sub_category_id">
                                 </select>
                             </div>
@@ -93,7 +93,7 @@
 
 </div>
 <script>
-  
+
 </script>
 @endsection
 {{-- ((res => {

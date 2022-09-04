@@ -48,7 +48,7 @@
 </div>
 <!-- SERVICE SECTION END -->
 <!-- FOOTER TOP SECTION START -->
-<div class="footer-top-section section pb-60 pt-100">
+<div id="footer" class="footer-top-section section pb-60 pt-100">
     <div class="container">
         <div class="row">
             <!-- Footer Widget -->
@@ -134,8 +134,8 @@
 <script>
     function renderCart(items) {
 
-        
-        
+
+
 
         const cart = document.querySelector(".cart");
         const count = document.querySelector(".itemstotal");

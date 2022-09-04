@@ -87,13 +87,16 @@
 		cancelButtonColor: " #2ab57d",
 		confirmButtonText: "Yes, delete it!"
 	}).then(function(e) {
-        let id = "dltform"+x;
+        if (e.isConfirmed) {
+            let id = "dltform"+x;
         // console.log(id);
         document.getElementById(id).submit();
+
+  }
 	})
-    
+
     }
-    
-		
+
+
 </script>
 @endsection

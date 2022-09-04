@@ -9,7 +9,7 @@
             <div class="container">
                 <div class="row">
                     <div class="hero-slider-content col-lg-6 offset-lg-6 col-md-7 offset-md-5 col-12">
-                        <h4>welcome to our</h4>
+                        <h4>welcome to</h4>
                         <h1 class="tlt">
                             <span class="texts">
                                 <span>{{ $content->name }}</span>
@@ -51,11 +51,11 @@
     <!-- BANNER-SECTION END -->
 
     <!-- PRODUCT SECTION START -->
-    <div class="product-section section pb-60">
+    <div class="product-section section pb-60" id="shop">
         <div class="container">
             <div class="section-title text-center mb-70">
                 <!-- <h4>our products</h4> -->
-                <h2>Our Leatest Products</h2>
+                <h2>Our Products</h2>
             </div>
             <div class="row">
                 @include('front.inc.details_modal')
